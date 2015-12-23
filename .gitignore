@@ -454,3 +454,4 @@ Temporary Items
 .apdisk
 
 db.development.sqlite
+db.test.sqlite

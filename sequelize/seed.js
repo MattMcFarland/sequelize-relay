@@ -1,28 +1,10 @@
-/**
- * Module Dependencies
- */
-import _ from 'lodash';
-import faker from 'faker';
-import { expect } from 'chai';
-import { describe, it, before } from 'mocha';
-import { models, connect } from '../../sequelize';
+const _ = require('lodash');
+const faker = require('faker');
+export const models = require('./models/index');
 
-describe('Database', () => {
-  let db;
-  before((done) => {
-    connect().then((_db) => {
-      done();
-      db = _db;
-    });
-  });
-
-  it('connects to the database', (done) => {
-    expect(db).to.not.be.an('undefined');
-    done();
-  });
-
-  it('seeds database', (done) => {
-    var { Person } = models;
+const seedDatabase = () => {
+  var { Person } = models;
+  return new Promise((resolve) => {
     return _.times(10, (i) => {
       return Person.create({
         additionalName: faker.name.firstName(),
@@ -42,10 +24,24 @@ describe('Database', () => {
           thumbnailUrl: faker.image.business()
         }).then(() => {
           if (i === 9) {
-            done();
+            resolve();
           }
         });
       });
     });
   });
-});
+};
+
+export const connect = () => {
+  return new Promise((resolve, reject) => {
+    try {
+      models.sequelize.sync().then(() => {
+        return seedDatabase().then(() => {
+          resolve(models);
+        });
+      });
+    } catch (error) {
+      reject(error);
+    }
+  });
+};

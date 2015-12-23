@@ -6,6 +6,12 @@
 
 module.exports = function (sequelize, DataTypes) {
   var Article = sequelize.define('Article', {
+    type: {
+      type: new DataTypes.VIRTUAL(DataTypes.STRING),
+      get() {
+        return 'articleType';
+      }
+    },
     articleBody: {
       type: DataTypes.TEXT,
       description: 'The actual body of the article.'
@@ -13,7 +19,7 @@ module.exports = function (sequelize, DataTypes) {
     articleSection: {
       type: DataTypes.STRING,
       description: 'Articles may belong to one or more "sections" in a ' +
-      'magazine' + ' or newspaper, such as Sports, Lifestyle, etc.'
+      'magazine or newspaper, such as Sports, Lifestyle, etc.'
     },
     headline: {
       type: DataTypes.STRING,

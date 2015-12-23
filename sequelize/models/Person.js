@@ -6,6 +6,12 @@
 module.exports = function (sequelize, DataTypes) {
 
   var Person = sequelize.define('Person', {
+    type: {
+      type: new DataTypes.VIRTUAL(DataTypes.STRING),
+      get() {
+        return 'personType';
+      }
+    },
     additionalName: {
       type: DataTypes.STRING,
       description: 'An additional name for a Person, can be used for a ' +

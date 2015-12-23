@@ -5,12 +5,14 @@
   "main": "lib/index.js",
   "scripts": {
     "prepublish": "npm test && npm run build",
-    "test": "npm run lint && npm run check && mocha $npm_package_options_mocha",
+    "test": "cp sequelize/db.fixture.sqlite ./db.test.sqlite && npm run lint && npm run check && mocha $npm_package_options_mocha",
     "testonly": "mocha $npm_package_options_mocha",
+    "seed": "mocha $npm_package_options_seed",
     "lint": "eslint src",
     "check": "flow check",
     "build": "rm -rf lib/* && babel src --ignore __tests__ --out-dir lib",
     "watch": "babel scripts/watch.js | node",
+    "watch:seed": "babel scripts/watch-seed.js | node",
     "cover": "babel-node node_modules/.bin/isparta cover --root src --report html node_modules/.bin/_mocha -- $npm_package_options_mocha",
     "cover:lcov": "babel-node node_modules/.bin/isparta cover --root src --report lcovonly node_modules/.bin/_mocha -- $npm_package_options_mocha"
   },
@@ -71,6 +73,7 @@
     "PATENTS"
   ],
   "options": {
-    "mocha": "--require scripts/mocha-bootload src/**/__tests__/**/*.js"
+    "mocha": "--require scripts/mocha-bootload src/**/__tests__/**/*.js",
+    "seed": "--require scripts/mocha-bootload sequelize/**/__tests__/**/*.js"
   }
 }
