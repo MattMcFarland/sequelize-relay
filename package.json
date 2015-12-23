@@ -1,7 +1,7 @@
 {
   "name": "sequelize-relay",
   "version": "0.0.0",
-  "description": "Relay Graphql implementation with sequelize and express",
+  "description": "A thin wrapper for sequelize and graphql-relay-js",
   "main": "lib/index.js",
   "scripts": {
     "prepublish": "npm test && npm run build",
