@@ -1,0 +1,4 @@
+{
+  "presets": ["bleeding"],
+  "plugins": ["transform-flow-strip-types"]
+}
