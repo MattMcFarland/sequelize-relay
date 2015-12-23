@@ -44,8 +44,8 @@ describe('Database', () => {
           if (i === 9) {
             done();
           }
-        }).catch(err => console.error(err));
-      }).catch(err => console.error(err));
+        });
+      });
     });
   });
 });
