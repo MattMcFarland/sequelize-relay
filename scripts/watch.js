@@ -131,7 +131,7 @@ function runTests(filepaths) {
   console.log('\nRunning Tests');
 
   return exec('mocha', [
-    '--reporter', 'progress',
+    '--reporter', 'nyan',
     '--require', 'scripts/mocha-bootload'
   ].concat(
     allTests(filepaths) ? filepaths.map(srcPath) : ['src/**/__tests__/**/*.js']
@@ -143,7 +143,8 @@ function lintFiles(filepaths) {
 
   return filepaths.reduce((prev, filepath) => prev.then(prevSuccess => {
     process.stdout.write('  ' + filepath + ' ...');
-    return exec('eslint', [srcPath(filepath)])
+    return exec('eslint', [
+      srcPath(filepath)])
       .catch(() => false)
       .then(success => {
         console.log(CLEARLINE + '  ' + (success ? CHECK : X) + ' ' + filepath);

@@ -7,6 +7,7 @@ import {
   GraphQLString,
 } from 'graphql';
 
+
 /**
  * GraphQL-Relay Modules
  */
@@ -22,11 +23,11 @@ import {
 import {
   getAll,
   mappedArray
-} from '../methods';
+} from '../data/methods';
 
 import {
   models
-} from '../../../sequelize';
+} from '../../sequelize';
 
 const { Person, Article } = models;
 
