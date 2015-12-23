@@ -1,3 +1,5 @@
+process.env.NODE_ENV = 'test';
+
 export const models = require('./models/index');
 
 export const connect = () => {

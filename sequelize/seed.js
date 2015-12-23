@@ -1,3 +1,5 @@
+process.env.NODE_ENV = 'development';
+
 const _ = require('lodash');
 const faker = require('faker');
 export const models = require('./models/index');
