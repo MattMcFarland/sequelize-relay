@@ -131,7 +131,7 @@ function runTests(filepaths) {
   console.log('\nRunning Tests');
 
   return exec('mocha', [
-    '--reporter', 'nyan',
+    '--reporter', 'spec',
     '--require', 'scripts/mocha-bootload'
   ].concat(
     allTests(filepaths) ? filepaths.map(srcPath) : ['src/**/__tests__/**/*.js']

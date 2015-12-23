@@ -6,8 +6,10 @@
  *  LICENSE file in the root directory of this source tree. An additional grant
  *  of patent rights can be found in the PATENTS file in the same directory.
  */
+require('babel-polyfill');
+require('babel-core/register');
 
-require('babel-register')();
+// require('babel-register')();
 
 var chai = require('chai');
 
