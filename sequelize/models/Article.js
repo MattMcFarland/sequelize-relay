@@ -1,10 +1,5 @@
-/**
- * Article Model
- * @see https://schema.org/Article
- * @type {Model}
- */
 
-module.exports = function (sequelize, DataTypes) {
+module.exports = function (sequelize: Sequelize, DataTypes) {
   var Article = sequelize.define('Article', {
     type: {
       type: new DataTypes.VIRTUAL(DataTypes.STRING),

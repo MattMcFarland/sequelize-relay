@@ -1,12 +1,7 @@
-
 /**
- *  Copyright (c) 2015, Facebook, Inc.
- *  All rights reserved.
- *
- *  This source code is licensed under the BSD-style license found in the
- *  LICENSE file in the root directory of this source tree. An additional grant
- *  of patent rights can be found in the PATENTS file in the same directory.
+ * personConnection.js
  */
+
 
 import {
   GraphQLObjectType,
@@ -27,7 +22,8 @@ import {
 import {
   getArrayData,
   getModelsByClass,
-  getArrayByClass
+  getArrayByClass,
+  resolveArrayByClass
 } from '../methods';
 
 import {
@@ -44,7 +40,7 @@ describe('test relay connections with sequelize', () => {
   var {nodeInterface, nodeField} = nodeDefinitions(
     (globalId) => {
       var {type, id} = fromGlobalId(globalId);
-      // console.log('nodeDefinitions', type, id, globalId);
+      console.log('nodeDefinitions', type, id, globalId);
       switch (type) {
         case 'Person':
           return Person.findByPrimary(id);
@@ -131,14 +127,14 @@ describe('test relay connections with sequelize', () => {
         type: personConnection,
         args: connectionArgs,
         resolve: (root, args) =>
-          connectionFromPromisedArray(getArrayByClass(Person), args)
+          connectionFromPromisedArray(resolveArrayByClass(Person), args)
       },
       articles: {
         decription: 'Articles',
         type: personConnection,
         args: connectionArgs,
         resolve: (root, args) =>
-          connectionFromPromisedArray(getArrayByClass(Person), args)
+          connectionFromPromisedArray(getArrayByClass(Article), args)
       },
       node: nodeField
     })
@@ -347,70 +343,122 @@ describe('test relay connections with sequelize', () => {
 
   describe('conversion to relay specification', () => {
 
-    it('has connection and edge fields', () => {
+    it('has connection and edge fields', (done) => {
       var query = `
-        query PersonQuery {
+        {
           people(first: 2) {
+            pageInfo {
+              startCursor
+              hasNextPage
+            }
             edges {
+              cursor
               node {
-              id
+                id
+                givenName
+                familyName
+                address
               }
             }
           }
         }`;
-      graphql(schema, query).then((resolved) => {
-        console.log('resolved', resolved);
+      var expected = {
+        data: {
+          people: {
+            pageInfo: {
+              startCursor: 'YXJyYXljb25uZWN0aW9uOjA=',
+              hasNextPage: true
+            },
+            edges: [
+              {
+                cursor: 'YXJyYXljb25uZWN0aW9uOjA=',
+                node: {
+                  id: 'UGVyc29uOjE=',
+                  givenName: 'Jaylan',
+                  familyName: 'Reinger',
+                  address: '40831 Chad Rue'
+                }
+              },
+              {
+                cursor: 'YXJyYXljb25uZWN0aW9uOjE=',
+                node: {
+                  id: 'UGVyc29uOjI=',
+                  givenName: 'Amir',
+                  familyName: 'Schmeler',
+                  address: '197 Mina Gardens'
+                }
+              }
+            ]
+          }
+        }
+      };
+      graphql(schema, query).then((theResponse) => {
+        expect(theResponse).to.deep.equal(expected);
+        done();
       });
     });
 
-
+    it('can get next page', (done) => {
+      let theResponse;
+      var query = `
+        {
+          people(first: 2, after: "YXJyYXljb25uZWN0aW9uOjE") {
+            pageInfo {
+              startCursor
+              hasNextPage
+            }
+            edges {
+              cursor
+              node {
+                id
+                givenName
+                familyName
+                address
+              }
+            }
+          }
+        }`;
+      var expected = {
+        data: {
+          people: {
+            pageInfo: {
+              startCursor: 'YXJyYXljb25uZWN0aW9uOjI=',
+              hasNextPage: true
+            },
+            edges: [
+              {
+                cursor: 'YXJyYXljb25uZWN0aW9uOjI=',
+                node: {
+                  id: 'UGVyc29uOjM=',
+                  givenName: 'Bobbie',
+                  familyName: 'Adams',
+                  address: '109 Ottilie Pass'
+                }
+              },
+              {
+                cursor: 'YXJyYXljb25uZWN0aW9uOjM=',
+                node: {
+                  id: 'UGVyc29uOjQ=',
+                  givenName: 'Berta',
+                  familyName: 'Abbott',
+                  address: '"60340 Gleason Heights'
+                }
+              }
+            ]
+          }
+        }
+      };
+      graphql(schema, query).then((res) => {
+        done();
+        theResponse = res;
+      });
+      it('matches fixture', (en) => {
+        expect(theResponse).to.deep.equal(expected);
+        en();
+      });
+    });
   });
 
-  /*
-
-   describe('connectionDefinition()', () => {
-   it('includes connection and edge fields', async () => {
-   var query = `
-   query PersonQuery {
-   people(first: 2) {
-   totalCount
-   edges {
-   node {
-   name
-   }
-   }
-   }
-   }
-   `;
-   var result = await graphql(schema, query);
-   console.log(JSON.stringify(result, null, 2));
-   /*
-   var expected = {
-   user: {
-   friends: {
-   totalCount: 4,
-   edges: [
-   {
-   friendshipTime: 'Yesterday',
-   node: {
-   name: 'Nick'
-   }
-   },
-   {
-   friendshipTime: 'Yesterday',
-   node: {
-   name: 'Lee'
-   }
-   },
-   ]
-   }
-   }
-   };
-   var result = await graphql(schema, query);
-   expect(result).to.deep.equal({ data: expected });
-
-   });
-   */
 
 });
 

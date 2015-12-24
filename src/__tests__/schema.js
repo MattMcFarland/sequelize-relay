@@ -8,6 +8,8 @@ import {
 } from 'graphql';
 
 
+
+
 /**
  * GraphQL-Relay Modules
  */
@@ -30,6 +32,7 @@ import {
 } from '../../sequelize';
 
 const { Person, Article } = models;
+
 
 /**
  * We get the node interface and field from the relay library.
@@ -165,8 +168,10 @@ var personType = new GraphQLObjectType({
   interfaces: [nodeInterface]
 });
 
+
 var {connectionType: personConnection} =
   connectionDefinitions({nodeType: personType});
+
 
 var queryType = new GraphQLObjectType({
   name: 'Query',

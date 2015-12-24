@@ -1,30 +1,17 @@
-/* @flow */
-
-declare class Model {
-  findAll: () => Promise;
-  dataValues: Object;
-  type: String;
-}
-
 
 /**
  * Returns a promise that will resolve into an array by using the Model class
  * static findAll method.
- * @param model {Model}
- * @returns {Promise<Array<Model>>}
  */
-export const getModelsByClass = (model: Model): Promise => {
+export const getModelsByClass = (model) => {
   return model.findAll();
 };
 
 
 /**
  * Returns a new promise containing a new array with only consumable data.
- * @param models {Array<Model>}
- * @returns {Promise<Array<Model>>}
  */
-export const getArrayData = (models: Array<Model>):
-  Promise<Array<Model>> => {
+export const getArrayData = (models) => {
   return new Promise((resolve, reject) => {
     try {
       resolve(resolveArrayData(models));
@@ -37,11 +24,8 @@ export const getArrayData = (models: Array<Model>):
 /**
  * Returns a promise that will resolve into a relay-compatible array of the
  * given Model Class.
- * @param model {Model}
- * @returns {Promise<Array<Model>>}
  */
-export const getArrayByClass = (model: Model):
-  Promise<Array<Object>> => {
+export const getArrayByClass = (model) => {
   return new Promise((resolve, reject) => {
     try {
       resolve(getArrayData(getModelsByClass(model)));
@@ -52,14 +36,20 @@ export const getArrayByClass = (model: Model):
 };
 
 
+/**
+ * Returns an array of Models by using the Model class static findAll method.
+ */
+export const resolveModelsByClass = async (model) => {
+  return await model.findAll();
+};
+
 
 /**
  * Returns a new array containing only consumable data from a model array.
  * @param models Array<Model>
  * @returns Array<Object>
  */
-export const resolveArrayData = (models: Array<Model>):
-  Array<Object> => {
+export const resolveArrayData = (models) => {
   let array = models.map(model => {
     return Object.assign({}, {
         type: model.type
@@ -71,3 +61,15 @@ export const resolveArrayData = (models: Array<Model>):
   return [].concat(...array);
 };
 
+
+/**
+ * Returns a new array containing only consumable data from a model Class.
+ * @param model
+ * @returns Array<Object>
+ */
+export const resolveArrayByClass = async (model) => {
+
+  let models = await resolveModelsByClass(model);
+  return resolveArrayData(models);
+
+};
