@@ -197,7 +197,6 @@ AppPackages/
 
 # Others
 
-
 *.dbmdl
 *.dbproj.schemaview
 *.pfx
