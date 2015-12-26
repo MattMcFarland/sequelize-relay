@@ -96,7 +96,7 @@ artifacts/
 *.tlh
 *.tmp
 *.tmp_proj
-*.log
+
 *.vspscc
 *.vssscc
 .builds
@@ -200,7 +200,6 @@ AppPackages/
 # Others
 ClientBin/
 [Ss]tyle[Cc]op.*
-~$*
 *.dbmdl
 *.dbproj.schemaview
 *.pfx
@@ -388,7 +387,6 @@ crashlytics-build.properties
 .metadata
 .gradle
 bin/
-tmp/
 *.bak
 *.swp
 *~.nib
