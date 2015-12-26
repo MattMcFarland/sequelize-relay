@@ -1,7 +1,7 @@
 # Created by .ignore support plugin (hsz.mobi)
 ### Emacs template
 # -*- mode: gitignore; -*-
-*~
+
 \#*\#
 /.emacs.desktop
 /.emacs.desktop.lock
@@ -171,7 +171,6 @@ publish/
 # Publish Web Output
 *.[Pp]ublish.xml
 *.azurePubxml
-# TODO: Comment the next line if you want to checkin your web deploy settings
 # but database connection strings (with potential passwords) will be unencrypted
 *.pubxml
 *.publishproj
@@ -202,7 +201,6 @@ AppPackages/
 ClientBin/
 [Ss]tyle[Cc]op.*
 ~$*
-*~
 *.dbmdl
 *.dbproj.schemaview
 *.pfx
@@ -274,14 +272,13 @@ $RECYCLE.BIN/
 *.un~
 Session.vim
 .netrwhist
-*~
+
 ### Xcode template
 # Xcode
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
 ## Build generated
-build/
 DerivedData
 
 ## Various settings
@@ -302,7 +299,7 @@ xcuserdata
 ### Node template
 # Logs
 logs
-*.log
+
 npm-debug.log*
 
 # Runtime data
@@ -380,7 +377,6 @@ crashlytics-build.properties
 .c9revisions
 .c9
 ### Linux template
-*~
 
 # KDE directory preferences
 .directory
@@ -393,7 +389,6 @@ crashlytics-build.properties
 .gradle
 bin/
 tmp/
-*.tmp
 *.bak
 *.swp
 *~.nib

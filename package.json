@@ -70,8 +70,7 @@
   "files": [
     "lib",
     "README.md",
-    "LICENSE",
-    "PATENTS"
+    "LICENSE"
   ],
   "options": {
     "mocha": "--require scripts/mocha-bootload src/**/__tests__/**/*.js",

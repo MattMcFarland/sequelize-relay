@@ -10,6 +10,7 @@ import {
   graphql,
 } from 'graphql';
 
+
 import {
   nodeDefinitions,
   fromGlobalId,
@@ -18,6 +19,7 @@ import {
   connectionArgs,
   connectionDefinitions,
 } from 'graphql-relay';
+
 
 import {
   getArrayData,
@@ -34,111 +36,112 @@ import {
 import { expect } from 'chai';
 import { describe, it, before } from 'mocha';
 
+const { Person, Article } = models;
+var {nodeInterface, nodeField} = nodeDefinitions(
+  (globalId) => {
+    var {type, id} = fromGlobalId(globalId);
+    console.log('nodeDefinitions', type, id, globalId);
+    switch (type) {
+      case 'Person':
+        return Person.findByPrimary(id);
+      case 'Article':
+        return Article.findByPrimary(id);
+      default:
+        return null;
+    }
+  },
+  (obj) => {
+    switch (obj.type) {
+      case 'personType':
+        return personType;
+      default:
+        return null;
+    }
+  }
+);
+
+var personType = new GraphQLObjectType({
+  name: 'Person',
+  description: 'A Person',
+  fields: () => ({
+    id: globalIdField(),
+    address: {
+      type: GraphQLString,
+      description: 'Physical address of the item.',
+      resolve: person => person.address
+    },
+    email: {
+      type: GraphQLString,
+      description: 'Email address',
+      resolve: person => person.email
+    },
+    familyName: {
+      type: GraphQLString,
+      description: 'Family name. In the U.S., the last name of an Person. ' +
+      'This can be used along with givenName instead of the name property.',
+      resolve: person => person.familyName
+    },
+    givenName: {
+      type: GraphQLString,
+      description: 'Given name. In the U.S., the first name of a Person. ' +
+      'This can be used along with familyName instead of the name property.',
+      resolve: person => person.givenName
+    },
+    honorificPrefix: {
+      type: GraphQLString,
+      description: 'An honorific prefix preceding a Person\'s name such as ' +
+      'Dr/Mrs/Mr.',
+      resolve: person => person.honorificPrefix
+    },
+    honorificSuffix: {
+      type: GraphQLString,
+      description: 'An honorific suffix preceding a Person\'s name such as ' +
+      'M.D. /PhD/MSCSW.',
+      resolve: person => person.honorificSuffix
+    },
+    jobTitle: {
+      type: GraphQLString,
+      description: 'The job title of the person ' +
+      '(for example, Financial Manager).',
+      resolve: person => person.jobTitle
+    },
+    telephone: {
+      type: GraphQLString,
+      description: 'The telephone number.',
+      resolve: person => person.telephone
+    }
+  }),
+  interfaces: [nodeInterface]
+});
+
+var {connectionType: personConnection} =
+  connectionDefinitions({nodeType: personType});
+
+
+
+var queryType = new GraphQLObjectType({
+  name: 'Query',
+  fields: () => ({
+    people: {
+      decription: 'People',
+      type: personConnection,
+      args: connectionArgs,
+      resolve: (root, args) =>
+        connectionFromPromisedArray(resolveArrayByClass(Person), args)
+    },
+    articles: {
+      decription: 'Articles',
+      type: personConnection,
+      args: connectionArgs,
+      resolve: (root, args) =>
+        connectionFromPromisedArray(getArrayByClass(Article), args)
+    },
+    node: nodeField
+  })
+});
 
 describe('test relay connections with sequelize', () => {
-  const { Person, Article } = models;
-  var {nodeInterface, nodeField} = nodeDefinitions(
-    (globalId) => {
-      var {type, id} = fromGlobalId(globalId);
-      console.log('nodeDefinitions', type, id, globalId);
-      switch (type) {
-        case 'Person':
-          return Person.findByPrimary(id);
-        case 'Article':
-          return Article.findByPrimary(id);
-        default:
-          return null;
-      }
-    },
-    (obj) => {
-      switch (obj.type) {
-        case 'personType':
-          return personType;
-        default:
-          return null;
-      }
-    }
-  );
 
-  var personType = new GraphQLObjectType({
-    name: 'Person',
-    description: 'A Person',
-    fields: () => ({
-      id: globalIdField(),
-      address: {
-        type: GraphQLString,
-        description: 'Physical address of the item.',
-        resolve: person => person.address
-      },
-      email: {
-        type: GraphQLString,
-        description: 'Email address',
-        resolve: person => person.email
-      },
-      familyName: {
-        type: GraphQLString,
-        description: 'Family name. In the U.S., the last name of an Person. ' +
-        'This can be used along with givenName instead of the name property.',
-        resolve: person => person.familyName
-      },
-      givenName: {
-        type: GraphQLString,
-        description: 'Given name. In the U.S., the first name of a Person. ' +
-        'This can be used along with familyName instead of the name property.',
-        resolve: person => person.givenName
-      },
-      honorificPrefix: {
-        type: GraphQLString,
-        description: 'An honorific prefix preceding a Person\'s name such as ' +
-        'Dr/Mrs/Mr.',
-        resolve: person => person.honorificPrefix
-      },
-      honorificSuffix: {
-        type: GraphQLString,
-        description: 'An honorific suffix preceding a Person\'s name such as ' +
-        'M.D. /PhD/MSCSW.',
-        resolve: person => person.honorificSuffix
-      },
-      jobTitle: {
-        type: GraphQLString,
-        description: 'The job title of the person ' +
-        '(for example, Financial Manager).',
-        resolve: person => person.jobTitle
-      },
-      telephone: {
-        type: GraphQLString,
-        description: 'The telephone number.',
-        resolve: person => person.telephone
-      },
-    }),
-    interfaces: [nodeInterface]
-  });
-
-  var {connectionType: personConnection} =
-    connectionDefinitions({nodeType: personType});
-
-
-
-  var queryType = new GraphQLObjectType({
-    name: 'Query',
-    fields: () => ({
-      people: {
-        decription: 'People',
-        type: personConnection,
-        args: connectionArgs,
-        resolve: (root, args) =>
-          connectionFromPromisedArray(resolveArrayByClass(Person), args)
-      },
-      articles: {
-        decription: 'Articles',
-        type: personConnection,
-        args: connectionArgs,
-        resolve: (root, args) =>
-          connectionFromPromisedArray(getArrayByClass(Article), args)
-      },
-      node: nodeField
-    })
-  });
 
   var schema = new GraphQLSchema({
     query: queryType
@@ -186,12 +189,12 @@ describe('test relay connections with sequelize', () => {
 
       it('matches fixture', () => {
 
+        // remove dates from the array
         var theArray = consumableArray.map(item => {
           let obj = {};
           Object.keys(item).forEach((key) => {
             if (key !== 'createdAt' && key !== 'updatedAt') {
               obj[key] = item[key];
-
             }
           });
           return obj;
@@ -337,7 +340,6 @@ describe('test relay connections with sequelize', () => {
 
 
   });
-
 
 
 
