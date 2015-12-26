@@ -20,7 +20,6 @@ import {
   connectionDefinitions,
 } from 'graphql-relay';
 
-
 import {
   getArrayData,
   getModelsByClass,
@@ -123,14 +122,14 @@ var queryType = new GraphQLObjectType({
   name: 'Query',
   fields: () => ({
     people: {
-      decription: 'People',
+      description: 'People',
       type: personConnection,
       args: connectionArgs,
       resolve: (root, args) =>
         connectionFromPromisedArray(resolveArrayByClass(Person), args)
     },
     articles: {
-      decription: 'Articles',
+      description: 'Articles',
       type: personConnection,
       args: connectionArgs,
       resolve: (root, args) =>
