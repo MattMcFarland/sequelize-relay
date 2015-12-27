@@ -51,7 +51,7 @@ var {nodeInterface, nodeField} = nodeDefinitions(
 > You can quickly setup sequelize by following [this guide](../sequelize/quick_setup_md) or by reading the [sequelize "GettingStarted" Guide](http://docs.sequelizejs.com/en/latest/docs/getting-started/)._
 
 
-Let's add the Person model like so:
+Consider a sequelize model called `person` with the code below:
 
 #### models/Person.js
 ```javascript
