@@ -7,7 +7,7 @@
    * [resolveArrayByClass](docs/methods/resolveArrayByClass.md)
    * [resolveArrayData](docs/methods/resolveArrayData.md)
    * [resolveModelsByClass](docs/methods/resolveModelsByClass.md)
-* [Sequelize](docs/sequelize/sequelize.md)
+* [Sequelize](docs/sequelize/sequelizemd.md)
    * [Quick setup](docs/docs/sequelize/quick_setup.md)
 * [GraphQL-Relay](docs/graphql/graphql.md)
    * [Using nodeDefinitions](docs/graphql/using_nodedefinitions.md)
