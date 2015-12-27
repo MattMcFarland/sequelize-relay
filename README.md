@@ -42,9 +42,13 @@ npm install sequelize-relay
 
 When building a schema for [GraphQL.js](https://github.com/graphql/graphql-js),
 the provided library functions can be used to simplify the creation of Relay
-patterns hand-in-hand with sequlize and graphql-relay.
+patterns hand-in-hand with sequalize and graphql-relay:
 
+* [getArrayData](getArrayData.md) - Converts an `Array` of <SequelizeModel> instances to an `Array` of <Attributes> objects.
+* [resolveArrayByClass](resolveArrayByClass.md) - First, it internally resolves an an `Array` of <SequelizeModel> instances that are of the passed-in `SequelizeClass`. Then it converts the array into a **promised** `Array` of <Attributes> objects.
+* [resolveArrayData](resolveArrayData.md) - Converts a **promised** `Array` of <SequelizeModel> instances into a **promised** `Array` of <Attributes> objects.
 
+[More methods here](https://mattmcfarland.gitbooks.io/sequelize-relay/content/docs/methods/SUMMARY.html)
 
 
 ## Contributing
