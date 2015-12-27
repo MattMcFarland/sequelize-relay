@@ -448,3 +448,5 @@ db.development.sqlite
 db.test.sqlite
 
 raw*.json
+
+lib

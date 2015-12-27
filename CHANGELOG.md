@@ -1,5 +1,10 @@
 ### Changelog
 
+#### v0.0.5
+
+- fixed docs
+- fixed lib folder issue (added to gitignore)
+
 #### v0.0.4
 
 - removed devdeps from deps

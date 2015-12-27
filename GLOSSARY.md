@@ -7,4 +7,5 @@ An instance of SequelizeClass that contains a lot of functionality (like getters
 # SequelizeClass
 A Javascript Class that contains static methods that help with connectivity with a sequelized database..
 
-
+# sequelize-relay
+The library this gitbook is about.
