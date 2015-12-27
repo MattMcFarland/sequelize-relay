@@ -20,7 +20,7 @@ Returns a **promised** `Array` of <SequelizeModel> objects by `SequelizeClass`.
 
 ### Module Import
 ```javascript
-    import { getModelsByClass } from 'sequelize-relay';
+    import { resolveModelsByClass } from 'sequelize-relay';
 ```
 
 
@@ -64,7 +64,7 @@ Now let's pretend we created a few different Users and we wanted to retrieve a l
 
 ```javascript
 import { models, connect } from 'myDatabase';
-import { getArrayData, getModelsByClass } from 'sequelize-relay';
+import { getArrayData, resolveModelsByClass } from 'sequelize-relay';
 
 var User = models.User;
 connect.then(db => {
