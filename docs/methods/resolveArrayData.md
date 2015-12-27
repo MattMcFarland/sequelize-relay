@@ -157,3 +157,13 @@ We get:
   }
 }
 ```
+
+
+
+
+#### More Examples
+
+You can view more examples by reviewing the source code:
+
+- Full [Person Model](../../sequelize/models/Person.js) Example from test source
+- Full [GraphQL Setup](../../src/data/__tests__/connections.js) Example from test source
