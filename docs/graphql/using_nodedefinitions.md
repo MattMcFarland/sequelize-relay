@@ -48,19 +48,14 @@ var {nodeInterface, nodeField} = nodeDefinitions(
 ```
 
 
-> You can quickly setup sequelize by following [this guide](../sequelize/quick_setup_md) or by reading the [sequelize docs](http://docs.sequelizejs.com/en/latest/docs/getting-started/)._
-
+> You can quickly setup sequelize by following [this guide](../sequelize/quick_setup_md) or by reading the [sequelize "GettingStarted" Guide](http://docs.sequelizejs.com/en/latest/docs/getting-started/)._
 
 
 Let's add the Person model like so:
 
 #### models/Person.js
 ```javascript
-/**
- * Person Model
- * @see https://schema.org/Person
- * @type {Model}
- */
+
 module.exports = function (sequelize, DataTypes) {
 
   var Person = sequelize.define('Person', {
@@ -91,7 +86,9 @@ module.exports = function (sequelize, DataTypes) {
 For this to work, we need to add virtual types to our sequelize model schema:
 
 #### Add personType VIRTUAL to the model
-Article.js is a standard sequelize model with the addition of the `type` field which is a `DataTypes.VIRTUAL`
+**This adds a field without putting it in the SQL table**
+
+Person.js is a standard sequelize model with the addition of the `type` field which is a `DataTypes.VIRTUAL`
 
 Using `DataTypes.VIRTUAL`:
 ```javascript
@@ -105,7 +102,7 @@ type: {
 
 
 
-By adding the `type` field returning `articleType` - the node is complete.
+By adding the `type` field returning `personType` - we can then add
 
 
 
