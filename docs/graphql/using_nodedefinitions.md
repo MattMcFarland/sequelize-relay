@@ -232,10 +232,9 @@ var personType = new GraphQLObjectType({
       description: 'Email address',
       resolve: person => person.email
     },
-    familyName: {
+    givenName: {
       type: GraphQLString,
-      description: 'Family name. In the U.S., the last name of an Person. ' +
-      'This can be used along with givenName instead of the name property.',
+      description: 'Given name. In the U.S., the first name of an Person.',
       resolve: person => person.familyName
     }
   }),
@@ -244,12 +243,12 @@ var personType = new GraphQLObjectType({
 ```
 
 ### add Connection
+> The connection methods below are also in the [Using connections](./using_connections.md) Guide.
 
 ```javascript
 var {connectionType: personConnection} =
   connectionDefinitions({nodeType: personType});
 ```
-
 
 ### queryType
 ```javascript
@@ -267,4 +266,41 @@ var queryType = new GraphQLObjectType({
   })
 });
 ```
-The connection methods shown above are explained further in the [Using connections](./using_connections.md) Guide.
+> The connection methods shown above are explained further in the [Using connections](./using_connections.md) Guide.
+
+### GraphQL Query
+You can now use the node like so:
+
+```graphQL
+query PersonRefetchQuery {
+ node(id: "UGVyc29uOjI=") {
+  id
+  ... on Person {
+    id
+    givenName
+    email
+    address
+  }
+}
+```
+#### returns => 
+
+```json
+
+  data: {
+    node: {
+      id: 'UGVyc29uOjI=',
+      email: 'Creola5@gmail.com',
+      honorificPrefix: 'Miss',
+      honorificSuffix: 'DVM',
+      jobTitle: 'Lead Creative Executive',
+      telephone: '718-964-7388 x29503',
+      givenName: 'Amir',
+      familyName: 'Schmeler',
+      address: '197 Mina Gardens'
+    }
+  }
+
+```
+
+Look at the [test-specs here](https://github.com/MattMcFarland/sequelize-relay/blob/master/src/data/__tests__/connections.js#L811-L850) to see how this works without brevity.
