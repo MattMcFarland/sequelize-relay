@@ -1,4 +1,11 @@
 ### Changelog
+
+#### v0.0.3
+
+- Added methods docs
+
+TODO: Add Guides
+
 #### v0.0.2
 
 - Added MIT LICENSE info.
