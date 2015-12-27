@@ -1,5 +1,5 @@
 # Summary
 
-* [Introduction](docs/INTRO.md)
+* [Introduction](INTRO.md)
 * [Methods](docs/methods.md)
 
