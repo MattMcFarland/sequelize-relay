@@ -7,7 +7,7 @@
    * [Using nodeDefinitions](docs/graphql/using_nodedefinitions.md)
    * [Using connections](docs/graphql/using_connections.md)
 * [References](docs/References/summarymd.md)
-   * Module Imports
+   * [Module Imports](docs/References/module_imports.md)
    * [Methods](docs/methods/SUMMARY.md)
        * [getArrayData](docs/methods/getArrayData.md)
        * [getModelsByClass](docs/methods/getModelsByClass.md)
