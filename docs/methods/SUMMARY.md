@@ -13,4 +13,4 @@
 <SequelizeModel> instances into a **promised** `Array` of <Attributes> objects.
 
 * [resolveModelsByClass](resolveModelsByClass.md) - Returns a
-**promised** `Array` of <Attributes> objects by `Class`.
+**promised** `Array` of <SequelizeModel> objects by `Class`.

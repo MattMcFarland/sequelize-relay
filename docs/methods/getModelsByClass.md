@@ -1,9 +1,9 @@
+# getModelsByClass ⇒ `Array<SequelizeModel>`
+**getModelsByClass(<SequelizeClass>) ⇒ `Array<SequelizeModel>`**
+Returns an `Array` of <SequelizeModel> instances that are of the passed-in `Class`.
 
-#### getModelsByClass(className) ⇒ `Array<SeqModelInstance>`
-Returns an array of sequelize model instances by the class name being
-passed into it.
 
-**Returns**: `Array.<ConsumableData>`
+**Returns**: `Array.<Attributes>`
 
 
 ----

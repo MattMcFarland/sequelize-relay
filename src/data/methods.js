@@ -51,8 +51,10 @@ export function getModelsByClass(
 
 
 /**
- * Converts an `Array` of <SequelizeModel> instances into a **promised**
- * `Array` of <Attributes> objects.
+ * First, it internally resolves an an `Array` of
+ * <SequelizeModel> instances that are of the passed-in `Class`.
+ * Then it converts the array into a **promised** `Array` of <Attributes>
+ * objects.
  * @param SeqClass
  * @param withMethods {Boolean} false by default.
  * @returns {Array.<Attributes>}
@@ -70,8 +72,8 @@ export async function resolveArrayByClass(
 
 
 /**
- * Takes a an array of sequelize-model instances and converts them into a
- * promised array of consumable data.
+ * Converts a promised  `Array` of <SequelizeModel> instances into a
+ * **promised** `Array` of <Attributes> objects.
  * @param instances
  * @param withMethods {Boolean} false by default.
  * @returns {Promise<Array<Attributes>>}
