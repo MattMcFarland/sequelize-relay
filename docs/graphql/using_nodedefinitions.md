@@ -267,4 +267,4 @@ var queryType = new GraphQLObjectType({
   })
 });
 ```
-The connection methods described above are explained further in the [Using connections](./using_connections.md) Guide.
+The connection methods shown above are explained further in the [Using connections](./using_connections.md) Guide.
