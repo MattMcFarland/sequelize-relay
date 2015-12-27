@@ -15,3 +15,4 @@ Returns a **promised** `Array` of <SequelizeModel> objects by `SequelizeClass`.
 </table>
 
 ----
+

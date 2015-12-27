@@ -1,7 +1,7 @@
 ## getArrayData ⇒ `Array<Attributes>`
 **getArrayData(`instances`, `withMethods`) ⇒ `Array<Attributes>`**
 
-Converts an `Array` of <SequelizeModel> instances to an `Array` of <Attributes> objects.
+**Description:** Converts an `Array` of <SequelizeModel> instances to an `Array` of <Attributes> objects.
 
 
 **Returns**: Array`<`Attributes`>`
@@ -16,3 +16,15 @@ Converts an `Array` of <SequelizeModel> instances to an `Array` of <Attributes> 
 </table>
 
 ----
+
+
+### Module Import
+```javascript
+    import { getArrayData } from 'sequelize-relay';
+```
+
+
+The `getArrayData` and <code>resolveArrayData](resolveArrayData.md)</code> methods are very similar as they both return
+an Array of Attributes objects.  The difference is `resolveArrayData` expects a **promised**
+Attributes `Array`, but the `getArrayData` method expects an Attributes `Array`.
+
