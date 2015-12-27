@@ -1,33 +1,34 @@
 # Sequelize wrapper for Relay and GraphQL.js
 
 This is a library to allow the easy creation of Relay-compliant servers using
- [sequelize](https://github.com/sequelize/sequelize),  [graphql-js](https://github.com/graphql/graphql-js) and
-[graphql-relay-js](https://github.com/graphql/graphql-relay-js).
+ [sequelize](https://github.com/sequelize/sequelize),
+ [graphql-js](https://github.com/graphql/graphql-js) and
+ [graphql-relay-js](https://github.com/graphql/graphql-relay-js).
 
 [![npm](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/package/sequelize-relay)
 [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)](https://travis-ci.org/MattMcFarland/sequelize-relay)
 [![Coverage Status](https://coveralls.io/repos/MattMcFarland/sequelize-relay/badge.svg?branch=master&service=github)](https://coveralls.io/github/MattMcFarland/sequelize-relay?branch=master)
 
+## Dependencies:
+- [sequelize](https://github.com/sequelize/sequelize) -
+ an easy-to-use multi sql dialect ORM for Node.js & io.js.
+ It currently supports MySQL, MariaDB, SQLite, PostgreSQL and MSSQL.
+- [graphql-relay-js](https://github.com/graphql/graphql-relay-js) -
+ A library to help construct a graphql-js server supporting react-relay.
+- [graphql-js](https://github.com/graphql/graphql-js) -
+ A reference implementation of GraphQL for JavaScript.
 
 ## Getting Started
 
-A basic understanding of GraphQL, Sequelize, and the graphql-relay helper functions
-are needed to provide context for this library
-
-An overview of GraphQL in general is available in the
-[README](https://github.com/facebook/graphql/blob/master/README.md) for the
-[Specification for GraphQL](https://github.com/facebook/graphql).
-
 This library is designed to work with the
 [graphql-relay-js](https://github.com/graphql/graphql-relay-js) implementation
-of a GraphQL server.
+of a GraphQL server using Sequelize.
 
 An overview of the functionality that a Relay-compliant GraphQL server should
 provide is in the [GraphQL Relay Specification](https://facebook.github.io/relay/docs/graphql-relay-specification.html)
-on the [Relay website](https://facebook.github.io/relay/). Consider revewing
+on the [Relay website](https://facebook.github.io/relay/). Consider reviewing
 the documentation and tests found at [graphql-relay-js](https://github.com/graphql/graphql-relay-js)
-along with the [tests](src/data/__tests__) to get started efficiently.
-
+along with the [tests](src/data/__tests__) and documentation found here.
 
 ## Using Sequelize Relay Library for GraphQL.js
 
@@ -39,7 +40,9 @@ npm install sequelize-relay
 
 When building a schema for [GraphQL.js](https://github.com/graphql/graphql-js),
 the provided library functions can be used to simplify the creation of Relay
-patterns.
+patterns hand-in-hand with sequlize and graphql-relay.
+
+
 
 
 ## Contributing
