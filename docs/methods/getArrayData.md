@@ -1,7 +1,7 @@
-## getArrayData ⇒ `Array<Attributes>`
-**getArrayData(`instances`, `withMethods`) ⇒ `Array<Attributes>`**
+## getArrayData ⇒ `Array`.`<`Attributes`>`
+**getArrayData(`instances` :`Array`.`<`SequelizeModel`>`, `withMethods` :`Boolean` `=` `false`) ⇒ `Array<Attributes>`**
 
-**Description:** Converts an `Array` of <SequelizeModel> instances to an `Array` of <Attributes> objects.
+**Description:** Converts an `Array` of `<`SequelizeModel`>` instances to an `Array` of `<Attributes>` object literals.
 
 
 **Returns**: Array`<`Attributes`>`
