@@ -10,7 +10,7 @@
 * [GraphQL-Relay](docs/graphql/graphql.md)
    * [Using nodeDefinitions](docs/graphql/using_nodedefinitions.md)
    * [Using connections](docs/graphql/using_connections.md)
+* [References](docs/References/summarymd.md)
 * [Sequelize](docs/sequelize/sequelizemd.md)
    * [Quick setup](docs/sequelize/quick_setup.md)
-* [References](docs/References/summarymd.md)
 
