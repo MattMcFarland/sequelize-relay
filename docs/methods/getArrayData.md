@@ -1,5 +1,5 @@
 ## getArrayData ⇒ `Array<Attributes>`
-**getArrayData(instances, withMethods) ⇒ `Array<Attributes>`**
+**getArrayData(`instances`, `withMethods`) ⇒ `Array<Attributes>`**
 
 Converts an `Array` of <SequelizeModel> instances to an `Array` of <Attributes> objects.
 
