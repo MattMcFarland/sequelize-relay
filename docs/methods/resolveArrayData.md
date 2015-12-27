@@ -33,13 +33,8 @@ an Array of Attributes objects.  The difference is that the `getArrayData` metho
 
 ```javascript
 var User = sequelize.define('user', {
-  firstName: {
-    type: Sequelize.STRING,
-    field: 'first_name' // Will result in an attribute that is firstName when user facing but first_name in the database
-  },
-  lastName: {
-    type: Sequelize.STRING
-  }
+  firstName: Sequelize.STRING,
+  lastName: Sequelize.STRING
 });
 
 User.sync({force: true}).then(function () {
@@ -54,10 +49,11 @@ User.sync({force: true}).then(function () {
 Now let's pretend we created 10 different Users and we wanted to retrieve a list of all 10, but only get their attributes.
 
 ```javascript
-async function getUserList () {
-  return await resolveArrayData(User.findAll());
-} // => [{firstName: 'John' ...}, {...}]
+import { Users } from 'myCoolDatabase';
 
+async function getUserList () {
+  return await resolveArrayData(Users.findAll());
+} // => [{firstName: 'John' ...}, {...}]
 ```
 
 Given the following sequelize Model:
@@ -75,10 +71,6 @@ var Person = sequelize.define('Person', {
 });
 ```
 *For more information about how sequelize models work, [click here](http://docs.sequelizejs.com/en/latest/docs/models-definition/).*
-
-If we call
-
-
 
 Consider the following GraphQL Schema Type for `personType` (shortened for brevity):
 

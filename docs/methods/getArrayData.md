@@ -69,3 +69,105 @@ async function getFlatArrayOfPeople () {
   return getArrayData(sequelizeArray);
 }
 ```
+
+Given the following sequelize Model:
+```javascript
+var Person = sequelize.define('Person', {
+  ..., // shortended for brevity
+}, {
+  classMethods: {
+    associate: (models) => {
+      Person.hasMany(models.Article, {
+        foreignKey: 'AuthorId'
+      });
+    }
+  }
+});
+```
+*For more information about how sequelize models work, [click here](http://docs.sequelizejs.com/en/latest/docs/models-definition/).*
+
+Consider the following GraphQL Schema Type for `personType` (shortened for brevity):
+
+```javascript
+
+
+var personType = new GraphQLObjectType({
+  fields: () => ({
+    ...,
+    articlesAuthored: {
+      type: articleConnection,
+      args: connectionArgs,
+      resolve: (person, args) =>
+        connectionFromArray(
+          getArrayData(person.getArticles()), args
+        )
+    }
+  })
+});
+```
+*For more information about `connectionArgs` and `connectionFromArray`, [click here](https://github.com/graphql/graphql-relay-js#connections).*
+
+`person.getArticles`, a sequelize method, will be passed in as our argument
+to `resolveArrayData` - which will then in turn return a correctly
+structured promise to `connectionFromPRomisedArray` which is a method
+imported from thw `graphql-relay-js` library.
+
+We are running our helper methods along with graphql-relay and graphql
+libraries, the usage of `resolveArrayData` can be noted here:
+
+```javascript
+resolve: (person, args) =>
+  connectionFromArray(
+    resolveArrayData(person.getArticles()), args
+  )
+```
+
+So when we run the following Relay style Query:
+
+```
+query PersonRefetchQuery {
+  node(id: "UGVyc29uOjI=") {
+    id
+    ... on Person {
+      id
+      givenName
+      familyName
+      address
+      articlesAuthored {
+        edges {
+          node {
+            id
+            headline
+            thumbnailUrl
+          }
+        }
+      }
+    }
+  }
+```
+
+We get:
+
+```json
+{
+  "data": {
+    "node": {
+      "id": "UGVyc29uOjI=",
+      "givenName": "Amir",
+      "familyName": "Schmeler",
+      "address": "197 Mina Gardens",
+      "articlesAuthored": {
+        "edges": [
+          {
+            "node": {
+              "id": "QXJ0aWNsZToy",
+              "headline": "Open-source object-oriented approach",
+              "thumbnailUrl": "http://lorempixel.com/640/480/business"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+```
