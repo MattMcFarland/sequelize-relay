@@ -1,2 +1,2 @@
-# GraphQL
+# GraphQL-Relay
 
