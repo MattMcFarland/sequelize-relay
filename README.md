@@ -9,6 +9,10 @@ This is a library to allow the easy creation of Relay-compliant servers using
 [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)](https://travis-ci.org/MattMcFarland/sequelize-relay)
 [![Coverage Status](https://coveralls.io/repos/MattMcFarland/sequelize-relay/badge.svg?branch=master&service=github)](https://coveralls.io/github/MattMcFarland/sequelize-relay?branch=master)
 
+## Documentation
+
+For a comprehensive walk-through and more documentation see []()
+
 ## Dependencies:
 - [sequelize](https://github.com/sequelize/sequelize) -
  an easy-to-use multi sql dialect ORM for Node.js & io.js.
@@ -19,6 +23,7 @@ This is a library to allow the easy creation of Relay-compliant servers using
  A reference implementation of GraphQL for JavaScript.
 
 ## Getting Started
+
 
 This library is designed to work with the
 [graphql-relay-js](https://github.com/graphql/graphql-relay-js) implementation
