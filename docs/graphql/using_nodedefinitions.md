@@ -47,7 +47,7 @@ var {nodeInterface, nodeField} = nodeDefinitions(
 );
 ```
 
-You can quickly setup sequelize by following [])_
+You can quickly setup sequelize by following [this guide](../sequelize) or by reading the sequelize docs._
 
 ## Adding sequelize models
 
