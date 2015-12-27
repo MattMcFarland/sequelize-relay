@@ -7,6 +7,9 @@ node_js:
 notifications:
   email: false
 
+before_script:
+  - npm install graphql graphql-relay sequelize
+
 script:
   - npm run lint && npm run check && (if [[ "$TRAVIS_JOB_NUMBER" == *.1 ]]; then npm run cover:lcov; else npm run testonly; fi)
 
