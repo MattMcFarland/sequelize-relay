@@ -137,6 +137,115 @@ var queryType = new GraphQLObjectType({
 ```
 
 
+### nodeInterface usage
+`nodeInterface` appears to be used for every query type that is not root.
+
+for example:
+
+```javascript
+var requestType = new GraphQLObjectType({
+  name: 'Request',
+  description: 'Tutorial Request',
+  fields: () => ({
+    id: globalIdField(),
+    url: {
+      type: GraphQLString,
+      description: 'href location to the tutorial request page.',
+      resolve: request => request.url
+    },
+    dateCreated: {
+      type: GraphQLString,
+      description: 'The date on which the Tutorial Request was created ' +
+      'or the item was added to a DataFeed.',
+      resolve: request => request.createdAt
+    },
+    dateModified: {
+      type: GraphQLString,
+      description: 'The date on which the Tag was most recently modified ' +
+      'or when the item\'s entry was modified within a DataFeed.',
+      resolve: request => request.updatedAt
+    },
+    author: {
+      type: userType,
+      description: 'The user who authored this request.',
+      resolve: request => request.getAuthor()
+    },
+    headline: {
+      type: GraphQLString,
+      description: 'Also considered the title of this request.',
+      resolve: request => request.headline
+    },
+    slug: {
+      type: GraphQLString,
+      description: 'The headline sluggified for creating seo friendly url.',
+      resolve: request => slugify(request.updatedAt)
+    },
+    content: {
+      type: GraphQLString,
+      description: 'The main body content of the tutorial request, ' +
+      'contains markdown syntax.',
+      resolve: request => request.content
+    },
+    comments: {
+      type: commentConnection,
+      description: 'List of comments posted on this tutorial request.',
+      args: connectionArgs,
+      resolve: (request, args) =>
+        connectionFromPromisedArray(mappedArray(request.getComments()), args)
+    },
+    tags: {
+      type: tagConnection,
+      description: 'List of tags posted on this tutorial request.',
+      args: connectionArgs,
+      resolve: (request, args) =>
+        connectionFromPromisedArray(mappedArray(request.getTags()), args)
+    },
+    tutorials: {
+      type: tutorialConnection,
+      description: 'List of tutorials posted as replies to this tutorial ' +
+      'request.',
+      args: connectionArgs,
+      resolve: (request, args) =>
+        connectionFromPromisedArray(mappedArray(request.getTutorials()), args)
+    },
+    votes: {
+      type: voteConnection,
+      description: 'List of vote objects containing the users and ' +
+      'their votes.',
+      args: connectionArgs,
+      resolve: (request, args) =>
+        connectionFromPromisedArray(mappedArray(request.getComments()), args)
+    },
+    flags: {
+      type: flagConnection,
+      description: 'List of flag objects containing the users and ' +
+      'their flags.',
+      args: connectionArgs,
+      resolve: (request, args) =>
+        connectionFromPromisedArray(mappedArray(request.getFlags()), args)
+    },
+    score: {
+      type: GraphQLInt,
+      description: 'Total score of the post after considering all of ' +
+      'the down/up votes.',
+      resolve: request => request.score
+    },
+    downVoteCount: {
+      type: GraphQLInt,
+      description: 'Sum total of down votes',
+      resolve: request => request.downVoteCount
+    },
+    upVoteCount: {
+      type: GraphQLInt,
+      description: 'Sum total of up votes',
+      resolve: request => request.upVoteCount
+    }
+  }),
+  interfaces: [nodeInterface]
+});
+```
+
+
 ### nodeType and connectDefinitions
 The following code shows `nodeType` in use via `connectionDefinitions`
 
