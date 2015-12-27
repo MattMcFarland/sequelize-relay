@@ -1,28 +1,26 @@
 /* @flow */
 
-type SeqModelClass = {
+type SequelizeClass = {
   findAll: Function
 }
 
-type ConsumableData = Object;
-type SeqModelInstance = {
+type Attributes = Object;
+type SequelizeModel = {
   type: String,
-  dataValues: ConsumableData
+  dataValues: Attributes
 }
 
-
-
 /**
- * Converts an array of sequelize-models instances into a simple
- * array of consumable data. You lose all methods.
+ * Converts an array of <SequelizeModel> instances to an array of <Attributes>
+ * objects.
  * @param instances
  * @param withMethods {Boolean} false by default.
- * @returns {Array.<ConsumableData>}
+ * @returns {Array.<Attributes>}
  */
 export function getArrayData(
-  instances: Array<SeqModelInstance>,
+  instances: Array<SequelizeModel>,
   withMethods: boolean = false
-): Array<ConsumableData> {
+): Array<Attributes> {
 
   if (withMethods) {
     return [].concat(...instances);
@@ -39,29 +37,49 @@ export function getArrayData(
 
 
 /**
- * Returns an array of sequelize model instances by the class name being
- * passed into it.
- * @param className
- * @returns {Array.<SeqModelInstance>}
+ * Returns an `Array` of
+ * <SequelizeModel> instances that are of the passed-in `Class`.
+ * @param SeqClass
+ * @returns {Array.<SequelizeModel>}
  */
 export function getModelsByClass(
-  className: SeqModelClass
-): Array<SeqModelInstance> {
-  return className.findAll();
+  SeqClass: SequelizeClass
+): Array<SequelizeModel> {
+  return SeqClass.findAll();
 }
 
 
+
 /**
- * Takes a an array of sequelize-model instances and converts them
- * into a promised array of consumable data.
+ * Converts an `Array` of <SequelizeModel> instances into a **promised**
+ * `Array` of <Attributes> objects.
+ * @param SeqClass
+ * @param withMethods {Boolean} false by default.
+ * @returns {Array.<Attributes>}
+ */
+export async function resolveArrayByClass(
+  SeqClass: SequelizeClass,
+  withMethods: boolean = false
+): Promise<Array<Attributes>> {
+
+  let models = await resolveModelsByClass(SeqClass);
+  return getArrayData(models, withMethods);
+
+}
+
+
+
+/**
+ * Takes a an array of sequelize-model instances and converts them into a
+ * promised array of consumable data.
  * @param instances
  * @param withMethods {Boolean} false by default.
- * @returns {Promise<Array<ConsumableData>>}
+ * @returns {Promise<Array<Attributes>>}
  */
 export function resolveArrayData(
-  instances: Promise<Array<SeqModelInstance>>,
+  instances: Promise<Array<SequelizeModel>>,
   withMethods: boolean = false
-): Promise<Array<ConsumableData>> {
+): Promise<Array<Attributes>> {
   return new Promise((resolve, reject) => {
     instances.then((models) => {
       resolve(getArrayData(models, withMethods));
@@ -71,33 +89,13 @@ export function resolveArrayData(
 
 
 /**
- * Returns a a promised array of consumable sequelize model instances by the
- * class name being passed into it.
+ * Returns a **promised** `Array` of <Attributes> objects by `Class`.
  *
- * @param className
- * @returns {Promise<Array<SeqModelInstance>>}
+ * @param SeqClass
+ * @returns {Promise<Array<SequelizeModel>>}
  */
 export async function resolveModelsByClass(
-  className: SeqModelClass
-): Promise<Array<SeqModelInstance>> {
-  return await className.findAll();
+  SeqClass: SequelizeClass
+): Promise<Array<SequelizeModel>> {
+  return await SeqClass.findAll();
 }
-
-
-/**
- * Returns a new promised array containing only consumable data from a model
- * Class.
- * @param className
- * @param withMethods {Boolean} false by default.
- * @returns {Array.<ConsumableData>}
- */
-export async function resolveArrayByClass(
-  className: SeqModelClass,
-  withMethods: boolean = false
-): Promise<Array<ConsumableData>> {
-
-  let models = await resolveModelsByClass(className);
-  return getArrayData(models, withMethods);
-
-}
-
