@@ -9,4 +9,5 @@
    * [resolveModelsByClass](docs/methods/resolveModelsByClass.md)
 * [GraphQL-Relay](docs/graphql/graphql.md)
    * [Using connections](docs/graphql/using_connections.md)
+   * Using nodeDefinitions
 
