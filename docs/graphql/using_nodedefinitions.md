@@ -53,7 +53,7 @@ var {nodeInterface, nodeField} = nodeDefinitions(
 
 Consider a sequelize model called `person` with the code below:
 
-#### models/Person.js
+### models/Person.js
 ```javascript
 
 module.exports = function (sequelize, DataTypes) {
@@ -96,7 +96,7 @@ type: {
 }
 ```
 
-#### models/Person.js with type added
+### models/Person.js with type added
 ```javascript
 
 module.exports = function (sequelize, DataTypes) {
@@ -131,46 +131,68 @@ module.exports = function (sequelize, DataTypes) {
 ```
 
 
-By adding the `type` field returning `personType` - we can then add
+By adding the `type` field returning `personType` - we can then wire it up to `nodeDefinitions` like so:
 
 
-
-
+## nodeDefintions Update
 
 ```javascript
-module.exports = function (sequelize: Sequelize, DataTypes) {
-  var Article = sequelize.define('Article', {
-    type: {
-      type: new DataTypes.VIRTUAL(DataTypes.STRING),
-      get() {
-        return 'articleType';
-      }
-    },
-    articleBody: {
-      type: DataTypes.TEXT,
-      description: 'The actual body of the article.'
-    },
-    articleSection: {
-      type: DataTypes.STRING,
-      description: 'Articles may belong to one or more "sections" in a ' +
-      'magazine or newspaper, such as Sports, Lifestyle, etc.'
-    },
-    headline: {
-      type: DataTypes.STRING,
-      description: 'Headline of the article.'
-    },
-    thumbnailUrl: {
-      type: DataTypes.STRING,
-      description: 'A URL path to the thumbnail image relevant to the Article.'
+/**
+ * We get the node interface and field from the relay library.
+ *
+ * The first method is the way we resolve an ID to its object.
+ * The second is the way we resolve an object that implements 
+ * node to its type.
+ */
+var {nodeInterface, nodeField} = nodeDefinitions(
+  (globalId) => {
+    var {type, id} = fromGlobalId(globalId);
+    switch (type) {
+      case 'Person':
+        return Person.findByPrimary(id);
+      default:
+        return null;
     }
-  }, {
-    classMethods: {
-      associate: (models) => {
-        Article.belongsTo(models.Person, {as: 'Author'});
-      }
+  },
+  (obj) => {
+    // we will use sequelize to resolve the object tha timplements node
+    // to its type.
+    switch (obj.type) {
+      case 'personType':
+        return personType;
+      default:
+       return null;
     }
-  });
-  return Article;
-};
-
+  }
+);
 ```
+
+### Define Person and personType 
+Well the code above doesnt explain where Person or personType is coming from.  This shall be demystified now:
+
+
+- Person is the Model Class that we created earlier from Person.js
+- personType is a GraphQL type schema that needs to be created.
+
+
+** Adding person**
+```javascript
+import { Person } from './models';
+```
+** Adding personType **
+
+```javascript
+
+var personType = new GraphQLObjectType({
+  name: 'Person',
+  description: 'A Person',
+  fields: () => ({
+    id: globalIdField(),
+  }),
+  interfaces: [nodeInterface] // <-- Hooking up the nodeInterface
+});
+```
+
+
+That's all there is to it.
+
