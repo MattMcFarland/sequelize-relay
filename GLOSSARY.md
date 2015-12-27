@@ -9,21 +9,12 @@ A Javascript Class that contains static methods that help with connectivity with
 
 # Class
 A Javascript Class.
+See [MDN - Classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
 
 # Promise
 An ECMAScript 6 Promise
 
-
 # Import
-Used to import modules
+Modules exported and retrievable using the `import` command.
 
-`javascript
-    import {
-        getArrayData,
-        getModelsByClass,
-        resolveArrayByClass,
-        resolveArrayData,
-        resolveModelsByClass
-    } from 'sequelize-relay';
-`
 
