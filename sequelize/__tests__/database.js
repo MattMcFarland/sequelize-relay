@@ -40,15 +40,30 @@ describe('Database', () => {
   describe('Populates', () => {
 
     it('populates articles', done => {
-      expect(getPeople(db)).to.not.be.an('undefined');
+      expect(getArticles(db)).to.not.be.an('undefined');
       done();
     });
     it('populates people', done => {
-      expect(getArticles(db)).to.not.be.an('undefined');
+      expect(getPeople(db)).to.not.be.an('undefined');
       done();
     });
 
   });
+
+  describe('Relationships', () => {
+
+    it('articles have author', (done) => {
+      db.Article.findAll().then(articles => {
+        articles[0].getAuthor().then(author => {
+          if (author) {
+            done();
+          }
+        }).catch(done);
+      }).catch(done);
+    });
+
+  });
+
 
 });
 

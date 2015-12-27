@@ -57,12 +57,11 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       description: 'The telephone number.'
     }
-
   }, {
     classMethods: {
       associate: (models) => {
         Person.hasMany(models.Article, {
-           foreignKey: 'AuthorId'
+          foreignKey: 'AuthorId'
         });
       }
     }
