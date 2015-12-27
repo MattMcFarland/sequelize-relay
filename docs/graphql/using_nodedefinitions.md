@@ -81,16 +81,12 @@ module.exports = function (sequelize, DataTypes) {
 
 ```
 
-
-
-For this to work, we need to add virtual types to our sequelize model schema:
+To connect with `nodeDefinitions`, we need to add virtual types to our `sequelize` model schema:
 
 #### Add personType VIRTUAL to the model
 **This adds a field without putting it in the SQL table**
 
-Person.js is a standard sequelize model with the addition of the `type` field which is a `DataTypes.VIRTUAL`
 
-Using `DataTypes.VIRTUAL`:
 ```javascript
 type: {
   type: new DataTypes.VIRTUAL(DataTypes.STRING),
@@ -100,6 +96,39 @@ type: {
 }
 ```
 
+#### models/Person.js with type added
+```javascript
+
+module.exports = function (sequelize, DataTypes) {
+
+  var Person = sequelize.define('Person', {
+    type: {
+      type: new DataTypes.VIRTUAL(DataTypes.STRING),
+      get() {
+        return 'personType';
+      }
+    },
+    address: {
+      type: DataTypes.STRING,
+      description: 'Physical address of the person.'
+    },
+    email: {
+      type: DataTypes.STRING,
+      description: 'Email address',
+      validate: {
+        isEmail: true
+      }
+    },
+    givenName: {
+      type: DataTypes.STRING,
+      description: 'Given name. In the U.S., the first name of a Person. ' +
+      'This can be used along with familyName instead of the name property.'
+    }
+  });
+  return Person;
+};
+
+```
 
 
 By adding the `type` field returning `personType` - we can then add
