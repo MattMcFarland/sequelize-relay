@@ -31,6 +31,8 @@ Attributes `Array`, but the `getArrayData` method expects an Attributes `Array`.
 ### Examples
 *For more information about how sequelize models work, [click here](http://docs.sequelizejs.com/en/latest/docs/models-definition/).*
 
+#### Example 1
+
 ```javascript
 var User = sequelize.define('user', {
   firstName: Sequelize.STRING,
@@ -58,6 +60,8 @@ db.Users.findAll().then(function (users) => {
 });
 ```
 
+#### Example 2
+
 Consider a `sequelize` model named `Person`:
 
 ```javascript
@@ -70,27 +74,15 @@ async function getFlatArrayOfPeople () {
 }
 ```
 
-Given the following sequelize Model:
-```javascript
-var Person = sequelize.define('Person', {
-  ..., // shortended for brevity
-}, {
-  classMethods: {
-    associate: (models) => {
-      Person.hasMany(models.Article, {
-        foreignKey: 'AuthorId'
-      });
-    }
-  }
-});
-```
+#### Example 3
+Given this [Person Model](../../sequelize/models/Person.js)
+
 *For more information about how sequelize models work, [click here](http://docs.sequelizejs.com/en/latest/docs/models-definition/).*
 
 Consider the following GraphQL Schema Type for `personType` (shortened for brevity):
 
+
 ```javascript
-
-
 var personType = new GraphQLObjectType({
   fields: () => ({
     ...,

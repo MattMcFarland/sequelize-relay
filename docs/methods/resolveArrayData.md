@@ -31,6 +31,8 @@ an Array of Attributes objects.  The difference is that the `getArrayData` metho
 
 ### Examples
 
+#### Example 1
+
 ```javascript
 var User = sequelize.define('user', {
   firstName: Sequelize.STRING,
@@ -56,27 +58,14 @@ async function getUserList () {
 } // => [{firstName: 'John' ...}, {...}]
 ```
 
-Given the following sequelize Model:
-```javascript
-var Person = sequelize.define('Person', {
-  ..., // shortended for brevity
-}, {
-  classMethods: {
-    associate: (models) => {
-      Person.hasMany(models.Article, {
-        foreignKey: 'AuthorId'
-      });
-    }
-  }
-});
-```
+#### Example 2
+
+Given this [Person Model](../../sequelize/models/Person.js)
 *For more information about how sequelize models work, [click here](http://docs.sequelizejs.com/en/latest/docs/models-definition/).*
 
 Consider the following GraphQL Schema Type for `personType` (shortened for brevity):
 
 ```javascript
-
-
 var personType = new GraphQLObjectType({
   fields: () => ({
     ...,
