@@ -1,4 +1,4 @@
 # Summary
 
-* Methods
+* [Methods](methods.md)
 
