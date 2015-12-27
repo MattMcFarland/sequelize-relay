@@ -59,6 +59,7 @@ var {nodeInterface, nodeField} = nodeDefinitions(
   }
 );
 
+
 var personType = new GraphQLObjectType({
   name: 'Person',
   description: 'A Person',
