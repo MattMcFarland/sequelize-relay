@@ -9,11 +9,11 @@
 * [References](docs/References/summarymd.md)
    * [Module Imports](docs/References/module_imports.md)
    * [nodeDefinitions](docs/References/nodedefinitions.md)
+   * [Connection Patterns](docs/References/connection_patterns.md)
    * [Methods](docs/methods/SUMMARY.md)
        * [getArrayData](docs/methods/getArrayData.md)
        * [getModelsByClass](docs/methods/getModelsByClass.md)
        * [resolveArrayByClass](docs/methods/resolveArrayByClass.md)
        * [resolveArrayData](docs/methods/resolveArrayData.md)
        * [resolveModelsByClass](docs/methods/resolveModelsByClass.md)
-   * [Connection Patterns](docs/References/connection_patterns.md)
 
