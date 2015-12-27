@@ -8,11 +8,11 @@
    * [Using connections](docs/graphql/using_connections.md)
 * [References](docs/References/summarymd.md)
    * [Module Imports](docs/References/module_imports.md)
+   * nodeDefinitions
    * [Methods](docs/methods/SUMMARY.md)
        * [getArrayData](docs/methods/getArrayData.md)
        * [getModelsByClass](docs/methods/getModelsByClass.md)
        * [resolveArrayByClass](docs/methods/resolveArrayByClass.md)
        * [resolveArrayData](docs/methods/resolveArrayData.md)
        * [resolveModelsByClass](docs/methods/resolveModelsByClass.md)
-   * nodeDefinitions
 
