@@ -12,5 +12,5 @@
    * [Using connections](docs/graphql/using_connections.md)
 * [Sequelize](docs/sequelize/sequelizemd.md)
    * [Quick setup](docs/sequelize/quick_setup.md)
-* Guides
+* [Guides](docs/guides/guides.md)
 
