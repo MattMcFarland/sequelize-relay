@@ -7,7 +7,7 @@
     ],
    "pluginsConfig": {
     "editlink": {
-      "base": "https://github.com/MattMcFarland/sequelize-relay/edit/master/content",
+      "base": "https://github.com/MattMcFarland/sequelize-relay/edit/master/",
       "label": "Edit This Page",
       "multilingual": false
     }
