@@ -11,7 +11,7 @@ This is a library to allow the easy creation of Relay-compliant servers using
 
 ## Documentation
 
-For a comprehensive walk-through and more documentation see []()
+For a comprehensive walk-through and more details [see the docs](https://mattmcfarland.gitbooks.io/sequelize-relay/content/index.html)
 
 ## Dependencies:
 - [sequelize](https://github.com/sequelize/sequelize) -
