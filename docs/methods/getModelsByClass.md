@@ -4,7 +4,7 @@
 Returns an `Array` of <SequelizeModel> instances that are of the passed-in `SequelizeClass`.
 
 
-**Returns**: `Array.<Attributes>`
+**Returns**: Array`<Attributes>`
 
 
 <table>
