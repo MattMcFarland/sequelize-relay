@@ -5,7 +5,7 @@
 
 You can have a similar setup that the documentation assumes by copying the files from the [repo here](https://github.com/MattMcFarland/sequelize-relay/tree/master/sequelize).
 
-## Adding sequelize models
+## Creating sequelize models
 
 The easiest way to add sequelize models is to use the sequelize CLI tool.  More information is available [here](http://docs.sequelizejs.com/en/latest/docs/migrations/?highlight=CLI).
 
