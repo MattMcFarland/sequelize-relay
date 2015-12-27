@@ -47,6 +47,8 @@ var {nodeInterface, nodeField} = nodeDefinitions(
 );
 ```
 
+You can quickly setup sequelize by following [])_
+
 ## Adding sequelize models
 
 The easiest way to add sequelize models is to use the sequelize CLI tool.  More information is available [here](http://docs.sequelizejs.com/en/latest/docs/migrations/?highlight=CLI).
