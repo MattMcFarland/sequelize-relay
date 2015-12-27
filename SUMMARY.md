@@ -12,4 +12,5 @@
 * [GraphQL-Relay](docs/graphql/graphql.md)
    * [Using nodeDefinitions](docs/graphql/using_nodedefinitions.md)
    * [Using connections](docs/graphql/using_connections.md)
+* Guides
 
