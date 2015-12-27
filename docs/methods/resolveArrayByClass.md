@@ -1,18 +1,26 @@
-## resolveArrayByClass ⇒ `Promise.<Array.<`Attributes`>>`
-**resolveArrayByClass(`<`SequelizeClass`>`, `withMethods :Boolean=false`) ⇒ `Promise<Array<Attributes>>`**
+## resolveArrayByClass ⇒ `Promise<Array<Attributes>>`
+**resolveArrayByClass(`SequelizeClass`, `withMethods :Boolean=false`) ⇒ `Promise<Array<Attributes>>`**
 
-First, it internally resolves an an `Array` of `<`SequelizeModel`>` instances
+First, it internally resolves an an `Array` of SequelizeModel instances
 that are of the passed-in SequelizeClass. Then it converts the `Array` into a
-**promised** `Array` of `<`Attributes`>` object literals.
+**promised** `Array` of Attributes objects.
 
 
-**Returns**: Promise`<Array<`Attributes`>>`
+**Returns**: `Promise<Array<Attributes>>`
 
 | Param           	| Type      	| Description                           	                |
 |------------------	|-----------	|---------------------------------------	                |
-| `SequelizeClass` 	| `Class`   	| A specific `SequelizeClass` to process. 	              |
-| `withMethods`    	| `Boolean` 	| Populate `<Attributes>` objects with sequelize methods  |
+| `SequelizeClass` 	| `Class`   	| A specific SequelizeClass to process.    	              |
+| `withMethods`    	| `Boolean` 	| Populate Attributes objects with sequelize methods      |
 
+
+
+### Module Import
+```javascript
+    import { resolveModelsByClass } from 'sequelize-relay';
+```
+
+### About
 
 The `resolveArrayByClass` combines [resolveModelsByClass](resolveModelsByClass.md) and [getArrayData](getArrayData.md)
  into one function for easier use of the API.

@@ -1,11 +1,9 @@
-## resolveModelsByClass ⇒ `Array.<`SequelizeModel`>`
-**resolveModelsByClass(`<`SequelizeClass`>`) ⇒ `Promise<Array<`SequelizeModel`>>`**
+## resolveModelsByClass ⇒ `Array<SequelizeModel>`
+**resolveModelsByClass(`SequelizeClass`) ⇒ `Promise<Array<SequelizeModel>>`**
 
-Returns a **promised** `Array` of `<`SequelizeModel`>` objects by SequelizeClass.
+Returns a **promised** `Array` of SequelizeModel instances by SequelizeClass.
 
-
-**Returns**: Promise.<Array<`SequelizeModel`>>
-
+**Returns**: Promise<Array<SequelizeModel>>
 
 | Param           	| Type      	| Description                           	                                                          |
 |------------------	|-----------	|---------------------------------------	                                                          |
@@ -21,6 +19,7 @@ Returns a **promised** `Array` of `<`SequelizeModel`>` objects by SequelizeClass
     import { resolveModelsByClass } from 'sequelize-relay';
 ```
 
+### About
 
 The `resolveModelsByClass` and [getModelsByClass](getModelsByClass.md) methods are very similar as they both return
 an Array of Attributes objects.  The difference is `getModelsByClass` returns the Attributes `Array` immediately, whereas

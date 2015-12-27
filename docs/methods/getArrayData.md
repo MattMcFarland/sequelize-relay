@@ -1,11 +1,10 @@
-## getArrayData ⇒ `Array`.`<Attributes>`
+## getArrayData ⇒ `Array<Attributes>`
 
 **getArrayData(`Array<SequelizeModel>`, `withMethods :Boolean = false`) ⇒ `Array<Attributes>`**
 
 **Description:** Convert `Array` of SequelizeModel instances to `Array` of Attributes objects.
 
 **Returns**: `Array<Attributes>`
-
 
 | Param           	| Type      	| Description                           	                |
 |------------------	|-----------	|---------------------------------------	                |
@@ -21,6 +20,7 @@
     import { getArrayData } from 'sequelize-relay';
 ```
 
+### About
 
 The `getArrayData` and [resolveArrayData](resolveArrayData.md) methods are very similar as they both return
 an Array of Attributes objects.  The difference is `resolveArrayData` expects a **promised**
