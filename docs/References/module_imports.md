@@ -1,6 +1,6 @@
 # Module Imports
 
-Some boilerplate for importing all the modules.  I typically comment out the ones I'm not using so I dont have to look them up again.
+Some boilerplate for importing all the modules into a graphql schema.js file.  I typically comment out the ones I'm not using so I don't have to look them up again.
 
 ```javascript
 
@@ -34,5 +34,16 @@ import {
   connectionDefinitions,
   mutationWithClientMutationId
 } from 'graphql-relay';
+
+/**
+ * Sequelize-Relay Modules
+ */
+import {
+  getModelsByClass,
+  resolveArrayData,
+  getArrayData,
+  resolveArrayByClass,
+  resolveModelsByClass
+} from 'sequelize-relay';
 
 ```
