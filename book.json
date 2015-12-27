@@ -1,5 +1,9 @@
 {
-  "structure": {
-    "readme": "INTRO.md"
-  }
+    "structure": {
+        "readme": "INTRO.md"
+    },
+    "plugins": [
+        "edit-link"
+    ],
+    "pluginsConfig": {}
 }
