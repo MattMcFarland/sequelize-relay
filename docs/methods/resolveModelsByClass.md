@@ -1,18 +1,16 @@
-## resolveModelsByClass ⇒ `Array.<SequelizeModel>`
-**resolveModelsByClass(`<`SequelizeClass`>`) ⇒ `Promise<Array<SequelizeModel>>`**
+## resolveModelsByClass ⇒ `Array.<`SequelizeModel`>`
+**resolveModelsByClass(`<`SequelizeClass`>`) ⇒ `Promise<Array<`SequelizeModel`>>`**
 
-Returns a **promised** `Array` of `<`SequelizeModel`>` objects by `SequelizeClass`.
-
-
-**Returns**: Promise`<Array<`SequelizeModel`>>`
+Returns a **promised** `Array` of `<`SequelizeModel`>` objects by SequelizeClass.
 
 
-<table>
-<thead><tr><th>Param</th><th>Type</th><th>Description</th></tr></thead>
-<tbody>
-<tr><td>SequelizeClass</td><td>Class</td><td>A specific SequelizeClass to process.</td></tr>
-</tbody>
-</table>
+**Returns**: Promise.<Array<`SequelizeModel`>>
+
+
+| Param           	| Type      	| Description                           	                                                          |
+|------------------	|-----------	|---------------------------------------	                                                          |
+| `SequelizeClass` 	| `Class`   	| A specific `SequelizeClass` to process. 	                                                          |                                                        |
+
 
 ----
 

@@ -1,5 +1,5 @@
 # Attributes
-A flat object containing key/value pairs.
+In A flat object literal containing key/value pairs.
 
 # SequelizeModel
 An instance of SequelizeClass that contains a lot of functionality (like getters and setters) and database methods.

@@ -1,5 +1,5 @@
-## resolveArrayData ⇒ `Promise.<Array.<Attributes>>`
-**resolveArrayData(`promisedInstances`, `withMethods`) ⇒ `Promise<Array<Attributes>>`**
+## resolveArrayData ⇒ `Promise.`<`Array.`<`Attributes`>>
+**resolveArrayData(`Promise.`<`Array`<`SequelizeModel`>>`, `withMethods :Boolean = false`) ⇒ `Promise.`<`Array`<`Attributes`>>`**
 
 Converts a **promised** `Array` of `<`SequelizeModel`>` instances into a **promised**
 `Array` of `<`Attributes`>` object literals.
