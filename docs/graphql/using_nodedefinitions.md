@@ -1,5 +1,7 @@
 # Using nodeDefinitions
 
+This guide aims to help explain how to connect to `nodeDefinitions` with `sequelize`.  
+
 ## Setting up relay nodes:
 
 We can use `nodeDefinitions` from `graphql-relay-js` in conjunction with `sequelize` helpers to setup the node definition.  This setup does not need the `sequelize-relay` library.
@@ -167,6 +169,38 @@ var {nodeInterface, nodeField} = nodeDefinitions(
 );
 ```
 
+### Import more libraries
+At the top of the file, we want to import other libraries that will be in use by `queryType` and `personType`, as well as connection helpers.
+
+```javascript
+import {
+  GraphQLObjectType,
+  GraphQLSchema,
+  GraphQLString,
+  graphql,
+} from 'graphql';
+
+
+import {
+  nodeDefinitions,
+  fromGlobalId,
+  globalIdField,
+  connectionFromPromisedArray,
+  connectionArgs,
+  connectionDefinitions,
+} from 'graphql-relay';
+
+import {
+  getModelsByClass,
+  resolveArrayData,
+  getArrayData,
+  resolveArrayByClass,
+  resolveModelsByClass
+} from 'sequelize-relay';
+
+```
+
+
 ### Define Person and personType 
 Well the code above doesnt explain where Person or personType is coming from.  This shall be demystified now:
 
@@ -188,11 +222,63 @@ var personType = new GraphQLObjectType({
   description: 'A Person',
   fields: () => ({
     id: globalIdField(),
+        address: {
+      type: GraphQLString,
+      description: 'Physical address of the item.',
+      resolve: person => person.address
+    },
+    email: {
+      type: GraphQLString,
+      description: 'Email address',
+      resolve: person => person.email
+    },
+    familyName: {
+      type: GraphQLString,
+      description: 'Family name. In the U.S., the last name of an Person. ' +
+      'This can be used along with givenName instead of the name property.',
+      resolve: person => person.familyName
+    }
   }),
   interfaces: [nodeInterface] // <-- Hooking up the nodeInterface
 });
 ```
 
+### add Connection
 
-That's all there is to it.
+```javascript
+var {connectionType: personConnection} =
+  connectionDefinitions({nodeType: personType});
+```
+
+
+### queryType
+```javascript
+var queryType = new GraphQLObjectType({
+  name: 'Query',
+  fields: () => ({
+    people: {
+      description: 'People',
+      type: personConnection,
+      args: connectionArgs,
+      resolve: (root, args) =>
+        connectionFromPromisedArray(resolveArrayByClass(Person), args)
+    },
+    peopleWithMethods: {
+      description: 'People with methods',
+      type: personConnection,
+      args: connectionArgs,
+      resolve: (root, args) =>
+        connectionFromPromisedArray(resolveArrayByClass(Person, true), args)
+    },
+    articles: {
+      description: 'Articles',
+      type: articleConnection,
+      args: connectionArgs,
+      resolve: (root, args) =>
+        connectionFromPromisedArray(resolveModelsByClass(Article), args)
+    },
+    node: nodeField
+  })
+});
+```
 
