@@ -8,7 +8,7 @@ Returns a **promised** `Array` of <SequelizeModel> objects by `SequelizeClass`.
 
 
 <table>
-<thead><th><td>Param</td><td>Type</td><td>Description</td></th></thead>
+<thead><tr><th>Param</th><th>Type</th><th>Description</th></tr></thead>
 <tbody>
 <tr><td>SequelizeClass</td><td>Class</td><td>A specific SequelizeClass to process.</td></tr>
 </tbody>
