@@ -8,4 +8,5 @@
    * [resolveArrayData](docs/methods/resolveArrayData.md)
    * [resolveModelsByClass](docs/methods/resolveModelsByClass.md)
 * [GraphQL](docs/graphql/graphql.md)
+   * Using connections
 
