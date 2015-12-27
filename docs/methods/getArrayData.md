@@ -4,7 +4,7 @@
 Converts an `Array` of <SequelizeModel> instances to an `Array` of <Attributes> objects.
 
 
-**Returns**: Array`<Attributes>`
+**Returns**: Array`<`Attributes`>`
 
 
 <table>

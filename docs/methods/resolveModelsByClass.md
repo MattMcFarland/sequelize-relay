@@ -4,7 +4,7 @@
 Returns a **promised** `Array` of <SequelizeModel> objects by `SequelizeClass`.
 
 
-**Returns**: Promise`<Array<SequelizeModel>>`
+**Returns**: Promise`<Array<`SequelizeModel`>>`
 
 
 <table>

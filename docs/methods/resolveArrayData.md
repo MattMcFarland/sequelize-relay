@@ -5,7 +5,7 @@ Converts a **promised** `Array` of <SequelizeModel> instances into a **promised*
 `Array` of <Attributes> objects.
 
 
-**Returns**: Promise`<Array<SequelizeModel>>`
+**Returns**: Promise`<Array<`SequelizeModel`>>`
 
 
 <table>

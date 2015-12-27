@@ -6,7 +6,7 @@ that are of the passed-in `SequelizeClass`. Then it converts the array into a
 **promised** `Array` of <Attributes> objects.
 
 
-**Returns**: Promise`<Array<Attributes>>`
+**Returns**: Promise`<Array<`Attributes`>>`
 
 
 <table>
