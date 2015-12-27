@@ -1,5 +1,10 @@
 ### Changelog
 
+#### v0.0.4
+
+- removed devdeps from deps
+- removed deps, replaced with peerDeps
+
 #### v0.0.3
 
 - Added methods docs
