@@ -1,6 +1,6 @@
 {
   "name": "sequelize-relay",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A thin wrapper for sequelize and graphql-relay-js",
   "main": "lib/index.js",
   "scripts": {
@@ -30,7 +30,7 @@
     "relay-js"
   ],
   "author": "Matt McFarland",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/MattMcFarland/sequelize-relay/issues"
   },
