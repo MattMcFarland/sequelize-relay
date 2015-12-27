@@ -1,5 +1,8 @@
 ### Changelog
 
+#### v0.0.6
+- Add peerDependencies to travis yml
+
 #### v0.0.5
 
 - fixed docs
