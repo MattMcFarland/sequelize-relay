@@ -11,5 +11,5 @@
    * [Using nodeDefinitions](docs/graphql/using_nodedefinitions.md)
    * [Using connections](docs/graphql/using_connections.md)
 * Sequelize
-   * Quick setup
+   * [Quick setup](quick_setup.md)
 
