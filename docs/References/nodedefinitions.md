@@ -9,16 +9,13 @@ import {
   nodeDefinitions,
   fromGlobalId,
   globalIdField,
-  // connectionFromArray,
-  connectionFromPromisedArray,
   connectionArgs,
   connectionDefinitions,
-  // mutationWithClientMutationId
 } from 'graphql-relay';
 ```
 
 
-### The node interface and field
+### Defining nodeInterface and nodeField 
 The following is an excerpt for a prototype version of [wanted-tuts.com](https://wanted-tuts.com)
 
 ```javascript
@@ -78,7 +75,69 @@ var {nodeInterface, nodeField} = nodeDefinitions(
 );
 ```
 
-### nodeType
+### nodeField usage in the wild
+nodeField appears to be used at the value of `node` in a root query. **(see the bottom of this snippet)**
+```javascript
+var queryType = new GraphQLObjectType({
+  name: 'Query',
+  fields: () => ({
+    users: {
+      decription: 'Sitewide users',
+      type: userConnection,
+      args: connectionArgs,
+      resolve: (root, args) =>
+        connectionFromPromisedArray(resolveModelsByClass(User), args)
+    },
+    comments: {
+      decription: 'Sitewide User comments',
+      type: commentConnection,
+      args: connectionArgs,
+      resolve: (root, args) =>
+        connectionFromPromisedArray(resolveModelsByClass(Comment), args)
+    },
+    tags: {
+      decription: 'Sitewide tags used for categorizing posts.',
+      type: tagConnection,
+      args: connectionArgs,
+      resolve: (root, args) =>
+        connectionFromPromisedArray(resolveModelsByClass(Tag), args)
+    },
+    votes: {
+      decription: 'Sitewide votes across the site.',
+      type: voteConnection,
+      args: connectionArgs,
+      resolve: (root, args) =>
+        connectionFromPromisedArray(resolveModelsByClass(Vote), args)
+    },
+    flags: {
+      decription: 'Sitewide flags across the site.',
+      type: flagConnection,
+      args: connectionArgs,
+      resolve: (root, args) =>
+        connectionFromPromisedArray(resolveModelsByClass(Flag), args)
+    },
+    tutorials: {
+      description: 'Tutorials added to the site as a request fufillment or ' +
+      'anything else.',
+      type: tutorialConnection,
+      args: connectionArgs,
+      resolve: (root, args) =>
+        connectionFromPromisedArray(resolveModelsByClass(Tutorial), args)
+    },
+    requests: {
+      decription: 'Tutorial Request Posts',
+      args: connectionArgs,
+      type: requestConnection,
+      resolve: (root, args) =>
+        connectionFromPromisedArray(resolveModelsByClass(Request), args)
+    },
+    node: nodeField // <- Bam
+  })
+});
+```
+
+
+### nodeType and connectDefinitions
 The following code shows `nodeType` in use via `connectionDefinitions`
 
 ```javascript
@@ -92,3 +151,4 @@ var {connectionType: flagConnection} =
 var {connectionType: fooConnection} =
   connectionDefinitions({nodeType: fooType});
 ```
+
