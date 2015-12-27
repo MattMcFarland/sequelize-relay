@@ -1,6 +1,7 @@
 # Summary
 
 * [Introduction](INTRO.md)
+   * Sequelize
 * [Methods](docs/methods/SUMMARY.md)
    * [getArrayData](docs/methods/getArrayData.md)
    * [getModelsByClass](docs/methods/getModelsByClass.md)
