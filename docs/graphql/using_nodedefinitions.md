@@ -262,23 +262,9 @@ var queryType = new GraphQLObjectType({
       args: connectionArgs,
       resolve: (root, args) =>
         connectionFromPromisedArray(resolveArrayByClass(Person), args)
-    },
-    peopleWithMethods: {
-      description: 'People with methods',
-      type: personConnection,
-      args: connectionArgs,
-      resolve: (root, args) =>
-        connectionFromPromisedArray(resolveArrayByClass(Person, true), args)
-    },
-    articles: {
-      description: 'Articles',
-      type: articleConnection,
-      args: connectionArgs,
-      resolve: (root, args) =>
-        connectionFromPromisedArray(resolveModelsByClass(Article), args)
-    },
+    }
     node: nodeField
   })
 });
 ```
-
+The connection methods described above are explained further in the [Using connections](./using_node) Guide.
