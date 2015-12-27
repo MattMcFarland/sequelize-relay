@@ -8,7 +8,7 @@
     ],
    "pluginsConfig": {
     "editlink": {
-      "base": "https://github.com/zhaoda/webpack-handbook/edit/master/content",
+      "base": "https://github.com/MattMcFarland/sequelize-relay/edit/master/content",
       "label": "Edit This Page",
       "multilingual": false
     }
