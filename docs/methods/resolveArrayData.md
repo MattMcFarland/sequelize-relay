@@ -25,7 +25,7 @@ Converts a **promised** `Array` of <SequelizeModel> instances into a **promised*
 ```
 
 
-The `resolveArrayData` and <code>[getArrayData](getArrayData.md)</code> methods are very similar as they both return
+The `resolveArrayData` and [getArrayData](getArrayData.md) methods are very similar as they both return
 an Array of Attributes objects.  The difference is that the `getArrayData` method expects an Attributes `Array`, and
 `resolveArrayData` expects a **promised** Attributes `Array` isntead.
 

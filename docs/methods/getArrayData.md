@@ -24,7 +24,7 @@
 ```
 
 
-The `getArrayData` and <code>[resolveArrayData](resolveArrayData.md)</code> methods are very similar as they both return
+The `getArrayData` and [resolveArrayData](resolveArrayData.md) methods are very similar as they both return
 an Array of Attributes objects.  The difference is `resolveArrayData` expects a **promised**
 Attributes `Array`, but the `getArrayData` method expects an Attributes `Array`.
 
