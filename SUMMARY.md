@@ -7,6 +7,6 @@
    * [resolveArrayByClass](docs/methods/resolveArrayByClass.md)
    * [resolveArrayData](docs/methods/resolveArrayData.md)
    * [resolveModelsByClass](docs/methods/resolveModelsByClass.md)
-* [GraphQL](docs/graphql/graphql.md)
+* [GraphQL-Relay](docs/graphql/graphql.md)
    * [Using connections](docs/graphql/using_connections.md)
 
