@@ -12,3 +12,23 @@ A Javascript Class.
 
 # Promise
 An ECMAScript 6 Promise
+
+# Module
+You can import a module that is installed with node package manager like so:
+```sh
+npm install sequelize-relay
+```
+
+# Import
+Used to import modules
+
+```javascript
+    import {
+        getArrayData,
+        getModelsByClass,
+        resolveArrayByClass,
+        resolveArrayData,
+        resolveModelsByClass
+    } from 'sequelize-relay';
+```
+
