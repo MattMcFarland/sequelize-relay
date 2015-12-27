@@ -1,4 +1,4 @@
-# Summary
+# Methods
 
 * [getArrayData](getArrayData.md) - Converts an `Array` of
 <SequelizeModel> instances to an `Array` of <Attributes> objects.
