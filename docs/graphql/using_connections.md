@@ -174,3 +174,161 @@ module.exports = function (sequelize, DataTypes) {
   return Person;
 };
 ```
+
+
+The `connections` are then mapped in the `graphQL` schema file(s).
+
+### articleType
+
+```javascript
+var articleType = new GraphQLObjectType({
+  name: 'Article',
+  description: 'An article, such as a news article or piece of ' +
+  'investigative report. Newspapers and magazines have articles of many ' +
+  'different types and this is intended to cover them all.',
+  fields: () => ({
+    id: globalIdField(),
+    articleBody: {
+      type: GraphQLString,
+      description: 'The actual body of the article.',
+      resolve: article => article.articleBody
+    },
+    articleSection: {
+      type: GraphQLString,
+      description: 'Articles may belong to one or more "sections" in a ' +
+      'magazine or newspaper, such as Sports, Lifestyle, etc.',
+      resolve: article => article.articleSection
+    },
+    headline: {
+      description: 'Headline of the article.',
+      type: GraphQLString,
+      resolve: article => article.headline
+    },
+    thumbnailUrl: {
+      description: 'A URL path to the thumbnail image relevant to ' +
+      'the Article.',
+      type: GraphQLString,
+      resolve: article => article.thumbnailUrl
+    },
+    author: {
+      description: 'Returns the Author or null.',
+      type: personType,
+      resolve: article => article.getAuthor()
+    }
+  }),
+  interfaces: [nodeInterface]
+});
+```
+
+The relay spec is then applied once we create the connection:
+
+```javascript
+
+var {connectionType: articleConnection} =
+  connectionDefinitions({nodeType: articleType});
+
+```
+
+## Connection Patterns
+You can see the patterns for connections as follows
+
+### foo
+```javascript
+var fooType = new GraphQLObjectType({
+  name: 'Foo',
+  fields: () => ({
+    id: globalIdField(),
+    someProp: {
+      type: GraphQLString,
+      resolve: foo => foo.prop
+    },
+    anotherProp: {
+      type: GraphQLString,
+      resolve: foo => foo.anotherProp
+    }
+  }),
+  interfaces: [nodeInterface]
+});
+
+
+var {connectionType: fooConnection} =
+  connectionDefinitions({nodeType: fooType});
+
+
+```
+### bar
+```javascript
+var barType = new GraphQLObjectType({
+  name: 'Bar',
+  fields: () => ({
+    id: globalIdField(),
+    someProp: {
+      type: GraphQLString,
+      resolve: bar => bar.prop
+    },
+    anotherProp: {
+      type: GraphQLString,
+      resolve: bar => bar.anotherProp
+    }
+  }),
+  interfaces: [nodeInterface]
+});
+
+var {connectionType: barConnection} =
+  connectionDefinitions({nodeType: barType});
+
+
+```
+### baz
+```javascript
+var bazType = new GraphQLObjectType({
+  name: 'baz',
+  fields: () => ({
+    id: globalIdField(),
+    someProp: {
+      type: GraphQLString,
+      resolve: baz => baz.prop
+    },
+    anotherProp: {
+      type: GraphQLString,
+      resolve: baz => baz.anotherProp
+    }
+  }),
+  interfaces: [nodeInterface]
+});
+
+var {connectionType: bazConnection} =
+  connectionDefinitions({nodeType: bazType});
+
+
+```
+
+#### the connectionDefintions again:
+They are above, but it might be worth sharing them one more time:
+
+
+### foo
+```javascript
+
+var {connectionType: fooConnection} =
+  connectionDefinitions({nodeType: fooType});
+
+
+```
+### bar
+```javascript
+
+var {connectionType: barConnection} =
+  connectionDefinitions({nodeType: barType});
+
+
+```
+### baz
+```javascript
+
+
+var {connectionType: bazConnection} =
+  connectionDefinitions({nodeType: bazType});
+
+
+```
