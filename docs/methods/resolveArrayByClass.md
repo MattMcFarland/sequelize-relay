@@ -2,7 +2,7 @@
 **resolveArrayByClass(<SequelizeClass>, withMethods) ⇒ `Promise<Array<Attributes>>`**
 
 First, it internally resolves an an `Array` of <SequelizeModel> instances
-that are of the passed-in `Class`. Then it converts the array into a
+that are of the passed-in `SequelizeClass`. Then it converts the array into a
 **promised** `Array` of <Attributes> objects.
 
 
