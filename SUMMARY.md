@@ -15,5 +15,5 @@
        * [resolveArrayByClass](docs/methods/resolveArrayByClass.md)
        * [resolveArrayData](docs/methods/resolveArrayData.md)
        * [resolveModelsByClass](docs/methods/resolveModelsByClass.md)
-   * Connection Patterns
+   * [Connection Patterns](docs/References/connection_patterns.md)
 
