@@ -1,12 +1,12 @@
 # Using nodeDefinitions
 
-### Setting up relay nodes:
+## Setting up relay nodes:
 
 We can use `nodeDefinitions` from `graphql-relay-js` in conjunction with `sequelize` helpers to setup the node definition.  This setup does not need the `sequelize-relay` library.
 
 What we need to do is wire up a `sequelize` model to the `nodeDefinitions` function.  
 
-#### import the modules:
+## import the modules:
 
 ```javascript
 import {
@@ -15,13 +15,11 @@ import {
 } from 'graphql-relay-js';
 ```
 
-I have personally used the following boilerplate to setup my nodeDefinitions.  I welcome other implementations, but the first step for me is to copy and paste the following code into the `schema` file
+I have personally used the following boilerplate to setup the `nodeDefinitions`.  I welcome other implementations, but the first step for me is to copy and paste the following code into the `schema` file
 
 
-#### nodeDefinitions boilerplate:
+## nodeDefinitions boilerplate:
 ```javascript
-// nodeDefinitions is a sequelize-relay-js method
-
 /**
  * We get the node interface and field from the relay library.
  *
@@ -49,8 +47,60 @@ var {nodeInterface, nodeField} = nodeDefinitions(
 );
 ```
 
+## Adding sequelize models
+
+The easiest way to add sequelize models is to use the sequelize CLI tool.  More information is available [here](http://docs.sequelizejs.com/en/latest/docs/migrations/?highlight=CLI).
+
+```sh
+npm install -g sequelize-cli && sequelize init
+```
+
+You should see a `models` directory with an `index.js` file that will import all sibling files, as well as a config.json file in a subdirectory labelled `config` 
+
+for a quick setup with sqlite3 you can do this:
+
+```sh
+npm install sqlite3 --save-dev
+```
+
+Open up your `models/config/config.json` and edit like this:
 
 
+
+
+Let's add the Person model like so:
+
+### models/Person.js
+```javascript
+/**
+ * Person Model
+ * @see https://schema.org/Person
+ * @type {Model}
+ */
+module.exports = function (sequelize, DataTypes) {
+
+  var Person = sequelize.define('Person', {
+    address: {
+      type: DataTypes.STRING,
+      description: 'Physical address of the person.'
+    },
+    email: {
+      type: DataTypes.STRING,
+      description: 'Email address',
+      validate: {
+        isEmail: true
+      }
+    },
+    givenName: {
+      type: DataTypes.STRING,
+      description: 'Given name. In the U.S., the first name of a Person. ' +
+      'This can be used along with familyName instead of the name property.'
+    }
+  });
+  return Person;
+};
+
+```
 
 For this to work, we need to add virtual types to our sequelize model schema:
 
