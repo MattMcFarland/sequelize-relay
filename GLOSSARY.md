@@ -9,3 +9,6 @@ A Javascript Class that contains static methods that help with connectivity with
 
 # sequelize-relay
 The library this gitbook is about.
+
+# ORM
+A library written that encapsulates the code needed to manipulate relational data.
