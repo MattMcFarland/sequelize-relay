@@ -241,7 +241,7 @@ var requestType = new GraphQLObjectType({
       resolve: request => request.upVoteCount
     }
   }),
-  interfaces: [nodeInterface]
+  interfaces: [nodeInterface] // <- nodeInterface
 });
 ```
 
