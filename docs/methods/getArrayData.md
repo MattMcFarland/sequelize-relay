@@ -28,121 +28,44 @@ The `getArrayData` and [resolveArrayData](resolveArrayData.md) methods are very 
 an Array of Attributes objects.  The difference is `resolveArrayData` expects a **promised**
 Attributes `Array`, but the `getArrayData` method expects an Attributes `Array`.
 
-Given the following sequelize Model:
-```javascript
-module.exports = function (sequelize, DataTypes) {
-
-  var Person = sequelize.define('Person', {
-    type: {...},
-    givenName: {...},
-    familyName: {...},
-    address: {...}
-  }, {
-    classMethods: {
-      associate: (models) => {
-        Person.hasMany(models.Article, {
-          foreignKey: 'AuthorId'
-        });
-      }
-    }
-  });
-  return Person;
-};
-```
+### Examples
 *For more information about how sequelize models work, [click here](http://docs.sequelizejs.com/en/latest/docs/models-definition/).*
 
-> NOTE: Sequelize will automatically create helper functions and also pluralize person to people.
-
-And consider the following GraphQL Schema Type for `personType`:
-
 ```javascript
-
-var {connectionType: personConnection} =
-  connectionDefinitions({nodeType: personType});
-
-var personType = new GraphQLObjectType({
-  name: 'Person',
-  description: 'A Person',
-  fields: () => ({
-    id: globalIdField(),
-    givenName: {...},
-    familyName: {...},
-    address: {...},
-    articlesAuthored: {
-      type: articleConnection,
-      args: connectionArgs,
-      resolve: (person, args) =>
-        connectionFromPromisedArray(
-          resolveArrayData(person.getArticles()), args
-        )
-    }
-  }),
-  interfaces: [nodeInterface]
+var User = sequelize.define('user', {
+  firstName: Sequelize.STRING,
+  lastName: Sequelize.STRING
 });
 
+User.sync({force: true}).then(function () {
+  // Table created
+  return User.create({
+    firstName: 'John',
+    lastName: 'Hancock'
+  });
+});
 ```
 
-`person.getArticles`, a sequelize method, will be passed in as our argument
-to `resolveArrayData` - which will then in turn return a correctly
-structured promise to `connectionFromPRomisedArray` which is a method
-imported from thw `graphql-relay-js` library.
+Now let's pretend we created a few different Users and we wanted to retrieve a list, but only get their attributes.
 
-We are running our helper methods along with graphql-relay and graphql
-libraries, the usage of `resolveArrayData` can be noted here:
+> NOTE: Sequelize will automatically create helper functions and also pluralize Users in the db object.
 
 ```javascript
-resolve: (person, args) =>
-  connectionFromPromisedArray(
-    resolveArrayData(person.getArticles()), args
-  )
+db.Users.findAll().then(function (users) => {
+  console.log(users); // complex multi array with circular objects, etc. good for some use-cases.
+  var justThePropsPlease = getArrayData(users); // flattened array like the SQL table.
+  var propsAndMethods = getArrayData(users, true); // flattened array with only getters/setters excluding static methods.
+});
 ```
 
-So when we run the following Relay style Query:
+Consider a `sequelize` model named `Person`:
 
-```
-query PersonRefetchQuery {
-  node(id: "UGVyc29uOjI=") {
-    id
-    ... on Person {
-      id
-      givenName
-      familyName
-      address
-      articlesAuthored {
-        edges {
-          node {
-            id
-            headline
-            thumbnailUrl
-          }
-        }
-      }
-    }
-  }
-```
+```javascript
+import { Person } from 'myDatabase';
+import { getArrayData, getModelsByClass } from 'sequelize-relay';
 
-We get:
-
-```json
-{
-  "data": {
-    "node": {
-      "id": "UGVyc29uOjI=",
-      "givenName": "Amir",
-      "familyName": "Schmeler",
-      "address": "197 Mina Gardens",
-      "articlesAuthored": {
-        "edges": [
-          {
-            "node": {
-              "id": "QXJ0aWNsZToy",
-              "headline": "Open-source object-oriented approach",
-              "thumbnailUrl": "http://lorempixel.com/640/480/business"
-            }
-          }
-        ]
-      }
-    }
-  }
+async function getFlatArrayOfPeople () {
+  let sequelizeArray = await getModelsByClass(Person);
+  return getArrayData(sequelizeArray);
 }
 ```
