@@ -271,6 +271,14 @@ var barType = new GraphQLObjectType({
       resolve: bar => bar.anotherProp
     }
   }),
+  fooFriends: {
+  type: fooConnection,
+  args: connectionArgs,
+  resolve: (bar, args) =>
+    connectionFromPromisedArray(
+      resolveArrayData(bar.getFooFriends()), args
+    )
+  }
   interfaces: [nodeInterface]
 });
 
@@ -292,6 +300,14 @@ var bazType = new GraphQLObjectType({
     anotherProp: {
       type: GraphQLString,
       resolve: baz => baz.anotherProp
+    },
+    fooFriends: {
+      type: fooConnection,
+      args: connectionArgs,
+      resolve: (baz, args) =>
+        connectionFromPromisedArray(
+          resolveArrayData(baz.getFooFreindss()), args
+      )
     }
   }),
   interfaces: [nodeInterface]
@@ -332,3 +348,9 @@ var {connectionType: bazConnection} =
 
 
 ```
+
+## connectionArgs
+
+connections are useful when dealing with relationships.
+
+
