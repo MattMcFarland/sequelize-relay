@@ -3,7 +3,8 @@
         "readme": "INTRO.md"
     },
     "plugins": [
-        "edit-link"
+        "edit-link",
+        "easyheightlight"
     ],
     "pluginsConfig": {}
 }
