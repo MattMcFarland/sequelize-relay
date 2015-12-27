@@ -17,3 +17,15 @@ Converts a **promised** `Array` of <SequelizeModel> instances into a **promised*
 </table>
 
 ----
+
+
+### Module Import
+```javascript
+    import { resovleArrayData } from 'sequelize-relay';
+```
+
+
+The `resolveArrayData` and <code>[getArrayData](getArrayData.md)</code> methods are very similar as they both return
+an Array of Attributes objects.  The difference is that the `getArrayData` method expects an Attributes `Array`, and
+`resolveArrayData` expects a **promised** Attributes `Array` isntead.
+
