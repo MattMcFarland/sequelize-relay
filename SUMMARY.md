@@ -13,4 +13,5 @@
        * [resolveArrayByClass](docs/methods/resolveArrayByClass.md)
        * [resolveArrayData](docs/methods/resolveArrayData.md)
        * [resolveModelsByClass](docs/methods/resolveModelsByClass.md)
+   * Module Imports
 
