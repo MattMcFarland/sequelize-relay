@@ -1,22 +1,17 @@
 ## getArrayData ⇒ `Array`.`<Attributes>`
 
-**getArrayData(`instances :Array.<SequelizeModel>`, `withMethods :Boolean = false`) ⇒**
+**getArrayData(`Array<SequelizeModel>`, `withMethods :Boolean = false`) ⇒ `Array<Attributes>`**
 
-**`Array<Attributes>`**
-
-**Description:** Converts an `Array` of `<SequelizeModel>` instances to an `Array` of `<Attributes>` objects.
-
+**Description:** Convert `Array` of SequelizeModel instances to `Array` of Attributes objects.
 
 **Returns**: `Array<Attributes>`
 
 
-<table>
-<thead><tr><th>Param</th><th>Type</th><th>Description</th></tr></thead>
-<tbody>
-<tr><td>instances</td><td>Array</td><td>An array of <SequelizeModel> instances</td></tr>
-<tr><td>withMethods</td><td>Boolean <code>default: false</code></td><td>If true, the <Attributes> objects wil also contain the get/set methods from the <SequelizeModel></td></tr>
-</tbody>
-</table>
+| Param           	| Type      	| Description                           	                |
+|------------------	|-----------	|---------------------------------------	                |
+| `SequelizeModels` | `Array`   	| Convert instances in array to Attributes                |
+| `withMethods`    	| `Boolean` 	| Populate `<Attributes>` objects with sequelize methods  |
+
 
 ----
 
