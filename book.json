@@ -6,5 +6,11 @@
         "easyheightlight",
         "editlink"
     ],
-    "pluginsConfig": {}
+   "pluginsConfig": {
+    "editlink": {
+      "base": "https://github.com/zhaoda/webpack-handbook/edit/master/content",
+      "label": "Edit This Page",
+      "multilingual": false
+    }
+  }
 }
