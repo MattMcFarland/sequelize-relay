@@ -53,6 +53,21 @@ var {nodeInterface, nodeField} = nodeDefinitions(
 For this to work, we need to add virtual types to our sequelize model schema:
 
 #### Article.js
+Article.js is a standard sequelize model with the addition of the `type` field which is a `DataTypes.VIRTUAL`
+
+Using `DataTypes.VIRTUAL`:
+```javascript
+type: {
+  type: new DataTypes.VIRTUAL(DataTypes.STRING),
+  get() {
+    return 'articleType';
+  }
+}
+```
+
+By adding the `type` field returning `articleType` - the node is complete.
+
+
 ```javascript
 module.exports = function (sequelize: Sequelize, DataTypes) {
   var Article = sequelize.define('Article', {
