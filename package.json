@@ -22,12 +22,10 @@
   },
   "keywords": [
     "sequelize",
-    "sql",
-    "express",
     "graphql",
-    "relay",
+    "relayjs",
     "server",
-    "relay-js"
+    "database"
   ],
   "author": "Matt McFarland",
   "license": "MIT",
@@ -70,7 +68,8 @@
   "files": [
     "lib",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "PATENT"
   ],
   "options": {
     "mocha": "--require scripts/mocha-bootload src/**/__tests__/**/*.js",

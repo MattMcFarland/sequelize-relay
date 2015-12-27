@@ -1,8 +1,7 @@
 export {
-  getModelsByClass,
   getArrayData,
-  getArrayByClass,
-  resolveModelsByClass,
+  getModelsByClass,
+  resolveArrayByClass,
   resolveArrayData,
-  resolveArrayByClass
+  resolveModelsByClass
 } from './data/methods';
