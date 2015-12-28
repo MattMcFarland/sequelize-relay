@@ -3,7 +3,7 @@
 * [Introduction](INTRO.md)
    * [Setup](docs/setup.md)
    * [Creating a Database](docs/creating_a_database.md)
-   * Creating GraphQL Schema
+   * [Creating GraphQL Schema](creating_graphql_schema.md)
 * [Sequelize](docs/sequelize/sequelizemd.md)
    * [Quick setup](docs/sequelize/quick_setup.md)
 * [GraphQL-Relay](docs/graphql/graphql.md)
