@@ -7,7 +7,8 @@ This section is about using [graphql-relay-js](https://github.com/graphql/graphq
 Connections are a big part of the graphql-relay-js library, and sequelize-relay works with it in the following ways:
 
 
-### Setting up relay nodes:
+## Setup nodes for connections
+`nodeDefinitions` should be configured to allow for using the connection helpers...
 
 ```javascript
 // nodeDefinitions is a sequelize-relay-js method
