@@ -1,5 +1,8 @@
 ### Changelog
 
+#### v0.0.7
+- remove peerDeps from travis, move to devDeps.
+
 #### v0.0.6
 - Add peerDependencies to travis yml
 
