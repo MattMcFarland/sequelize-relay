@@ -1,7 +1,7 @@
 # Summary
 
 * [Introduction](INTRO.md)
-   * Setup
+   * [Setup](docs/setup.md)
 * [Sequelize](docs/sequelize/sequelizemd.md)
    * [Quick setup](docs/sequelize/quick_setup.md)
 * [GraphQL-Relay](docs/graphql/graphql.md)
