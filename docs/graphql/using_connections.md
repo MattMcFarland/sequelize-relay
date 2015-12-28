@@ -1,4 +1,8 @@
-# Using connections
+# GraphQL-Relay - Using connections
+This section is about using [graphql-relay-js](https://github.com/graphql/graphql-relay-js) with sequalize-relay.
+
+---
+
 
 Connections are a big part of the graphql-relay-js library, and sequelize-relay works with it in the following ways:
 
