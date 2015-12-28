@@ -4,7 +4,7 @@
    * [Setup](docs/setup.md)
    * [Creating a Database](docs/creating_a_database.md)
    * [Creating GraphQL Schema](creating_graphql_schema.md)
-   * Connecting GraphQL and Relay
+   * [Connecting GraphQL and Relay](connecting_graphql_and_relay.md)
    * Connecting to React
 * [Sequelize](docs/sequelize/sequelizemd.md)
    * [Quick setup](docs/sequelize/quick_setup.md)
