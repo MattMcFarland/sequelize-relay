@@ -1,4 +1,6 @@
 # GraphQL-Relay - Using connections
+![GraphQL Logo](graphql.jpg)
+
 This section is about using [graphql-relay-js](https://github.com/graphql/graphql-relay-js) with sequalize-relay.
 
 ---
