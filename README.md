@@ -5,8 +5,8 @@ This is a library to allow the easy creation of Relay-compliant servers using
  [graphql-js](https://github.com/graphql/graphql-js) and
  [graphql-relay-js](https://github.com/graphql/graphql-relay-js).
 
-[![npm](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/package/sequelize-relay)
-[![Travis](https://img.shields.io/travis/rust-lang/rust.svg)](https://travis-ci.org/MattMcFarland/sequelize-relay)
+[![npm](https://img.shields.io/npm/v/sequelize-relay.svg)](https://www.npmjs.com/package/sequelize-relay)
+[![Travis](https://img.shields.io/travis/MattMcFarland/sequelize-relay.svg)](https://travis-ci.org/MattMcFarland/sequelize-relay)
 [![Coverage Status](https://coveralls.io/repos/MattMcFarland/sequelize-relay/badge.svg?branch=master&service=github)](https://coveralls.io/github/MattMcFarland/sequelize-relay?branch=master)
 
 ## Documentation
