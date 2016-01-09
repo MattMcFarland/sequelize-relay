@@ -24,6 +24,14 @@ This library is designed to work with the
 [graphql-relay-js](https://github.com/graphql/graphql-relay-js) implementation
 of a GraphQL server using [Sequelize](https://github.com/sequelize/sequelize).
 
+
+1. Setup a new npm project
+2. Run `npm install graphql graphql-relay-js sequelize sequelize-relay --save-dev`
+3. Setup a Sequelize Server
+4. Setup your GraphQL Schema
+5. Use graphql-relay-js, sequelize, and sequelize-relay helper functions and win.
+6. Common Patterns, helper methods, etc in the References page.
+
 ## Methods
 
 * [getArrayData](docs/methods/getArrayData.md) - Converts an `Array` of `<SequelizeModel>` instances to an `Array` of <Attributes> objects.
@@ -36,7 +44,3 @@ of a GraphQL server using [Sequelize](https://github.com/sequelize/sequelize).
 
 * [resolveModelsByClass](docs/methods/resolveModelsByClass.md) - Returns a **promised** `Array` of `<SequelizeModel>` objects by `SequelizeClass`.
 
-## Coming soon:
-
-- Howto guides
-- Tutorials
