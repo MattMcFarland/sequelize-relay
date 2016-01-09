@@ -59,13 +59,15 @@ export function getModelsByClass(
  * @param withMethods {Boolean} false by default.
  * @returns {Array.<Attributes>}
  */
-export async function resolveArrayByClass(
+export function resolveArrayByClass(
   SeqClass: SequelizeClass,
   withMethods: boolean = false
 ): Promise<Array<Attributes>> {
-
-  let models = await resolveModelsByClass(SeqClass);
-  return getArrayData(models, withMethods);
+  return new Promise((resolve, reject) => {
+    resolveModelsByClass(SeqClass).then(m => {
+      resolve(getArrayData(m, withMethods));
+    }).catch(reject);
+  });
 
 }
 
@@ -96,8 +98,8 @@ export function resolveArrayData(
  * @param SeqClass
  * @returns {Promise<Array<SequelizeModel>>}
  */
-export async function resolveModelsByClass(
+export function resolveModelsByClass(
   SeqClass: SequelizeClass
 ): Promise<Array<SequelizeModel>> {
-  return await SeqClass.findAll();
+  return SeqClass.findAll();
 }

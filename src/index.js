@@ -1,5 +1,3 @@
-require('babel-core/register');
-require('babel-polyfill');
 
 export {
   getArrayData,
