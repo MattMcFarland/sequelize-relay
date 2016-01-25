@@ -195,7 +195,9 @@ var queryType = new GraphQLObjectType({
       type: articleConnection,
       args: connectionArgs,
       resolve: (root, args) =>
-        connectionFromPromisedArray(resolveModelsByClass(Article), args)
+        connectionFromPromisedArray(
+          resolveModelsByClass(Article), args
+        )
     },
     node: nodeField
   })
@@ -401,6 +403,55 @@ describe('test relay connections with sequelize', () => {
     });
 
 
+  });
+  describe('resolveModelsByClass : sequelizeArgs', () => {
+    let queriedArray;
+    it('sorts ascending', async () => {
+      queriedArray = await resolveModelsByClass(Person, {
+        order: 'givenName ASC'});
+      expect(queriedArray).to.be.a('array');
+      let expected = [
+        'Adrienne',
+        'Aiyana',
+        'Amir',
+        'Berta',
+        'Bobbie',
+        'Eleonore',
+        'Genoveva',
+        'Gracie',
+        'Jaylan',
+        'Jennie'
+      ];
+      let actual = queriedArray.map(item => {
+        return item.dataValues.givenName;
+      });
+      expect(actual).to.deep.equal(expected);
+    });
+  });
+
+  describe('getModelsByClass : sequelizeArgs', () => {
+    let queriedArray;
+    it('sorts ascending', async () => {
+      queriedArray = await getModelsByClass(Person, {
+        order: 'givenName ASC'});
+      expect(queriedArray).to.be.a('array');
+      let expected = [
+        'Adrienne',
+        'Aiyana',
+        'Amir',
+        'Berta',
+        'Bobbie',
+        'Eleonore',
+        'Genoveva',
+        'Gracie',
+        'Jaylan',
+        'Jennie'
+      ];
+      let actual = queriedArray.map(item => {
+        return item.dataValues.givenName;
+      });
+      expect(actual).to.deep.equal(expected);
+    });
   });
 
   describe('getModelsByClass(Article) => sequelizeArray', () => {

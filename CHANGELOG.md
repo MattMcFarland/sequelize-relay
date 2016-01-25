@@ -1,5 +1,8 @@
 ### Changelog
 
+#### v0.1.0
+- Add optional query object to resolvers.
+
 #### v0.0.7
 - remove peerDeps from travis, move to devDeps.
 

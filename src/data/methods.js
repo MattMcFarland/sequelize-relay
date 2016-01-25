@@ -40,12 +40,14 @@ export function getArrayData(
  * Returns an `Array` of
  * <SequelizeModel> instances that are of the passed-in `Class`.
  * @param SeqClass
+ * @param query // optional query object
  * @returns {Array.<SequelizeModel>}
  */
 export function getModelsByClass(
-  SeqClass: SequelizeClass
+  SeqClass: SequelizeClass,
+  query: ?Object
 ): Array<SequelizeModel> {
-  return SeqClass.findAll();
+  return query ? SeqClass.findAll(query) : SeqClass.findAll();
 }
 
 
@@ -96,10 +98,12 @@ export function resolveArrayData(
  * Returns a **promised** `Array` of <Attributes> objects by `Class`.
  *
  * @param SeqClass
+ * @param query // optional query object
  * @returns {Promise<Array<SequelizeModel>>}
  */
 export function resolveModelsByClass(
-  SeqClass: SequelizeClass
+  SeqClass: SequelizeClass,
+  query: ?Object
 ): Promise<Array<SequelizeModel>> {
-  return SeqClass.findAll();
+  return query ? SeqClass.findAll(query) : SeqClass.findAll();
 }

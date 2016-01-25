@@ -48,6 +48,20 @@ patterns hand-in-hand with sequalize and graphql-relay:
 * [resolveArrayByClass](resolveArrayByClass.md) - First, it internally resolves an an `Array` of <SequelizeModel> instances that are of the passed-in `SequelizeClass`. Then it converts the array into a **promised** `Array` of <Attributes> objects.
 * [resolveArrayData](resolveArrayData.md) - Converts a **promised** `Array` of <SequelizeModel> instances into a **promised** `Array` of <Attributes> objects.
 
+* NEW! - Sequelize Queries are available as an argument:
+
+```
+    articles: {
+      description: 'Articles',
+      type: articleConnection,
+      args: connectionArgs,
+      resolve: (root, args) =>
+        connectionFromPromisedArray(
+          resolveModelsByClass(Article, { order: args.order}), args
+        )
+    },
+```
+
 [More methods here](https://mattmcfarland.gitbooks.io/sequelize-relay/content/docs/methods/SUMMARY.html)
 
 
