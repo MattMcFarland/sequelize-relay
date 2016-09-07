@@ -679,16 +679,8 @@ describe('test relay connections with sequelize', () => {
           id
         }
       }`;
-      var expected = {
-        errors: [
-          {
-            message: 'Syntax Error GraphQL request (8:8) Expected Name, ' +
-            'found EOF\n\n7:         }\n8:       }\n          ^\n'
-          }
-        ]
-      };
       graphql(schema, query).then((theResponse) => {
-        expect(theResponse).to.deep.equal(expected);
+        expect(theResponse.errors.length).to.equal(1);
         done();
       }).catch(done);
     });
