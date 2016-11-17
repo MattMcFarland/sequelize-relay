@@ -48,7 +48,7 @@
     "eslint": "^3.4.0",
     "eslint-plugin-flow-vars": "^0.5.0",
     "express": "^4.13.3",
-    "express-graphql": "^0.5.4",
+    "express-graphql": "^0.6.1",
     "faker": "^3.0.1",
     "flow-bin": "^0.32.0",
     "isparta": "^4.0.0",
