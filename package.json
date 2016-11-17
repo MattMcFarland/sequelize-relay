@@ -4,7 +4,9 @@
   "description": "A thin wrapper for sequelize and graphql-relay-js",
   "main": "lib/index.js",
   "scripts": {
-    "test": "cp sequelize/db.fixture.sqlite ./db.test.sqlite && npm run lint && npm run check && mocha $npm_package_options_mocha",
+    "pretest": "cp sequelize/db.fixture.sqlite ./db.test.sqlite && npm run lint && npm run check",
+    "test": "mocha $npm_package_options_mocha",
+    "travis": "scripts/travis.sh",
     "testonly": "mocha $npm_package_options_mocha",
     "seed": "mocha $npm_package_options_seed",
     "lint": "eslint src",
