@@ -1,5 +1,9 @@
 ### Changelog
 
+#### v1.0.0
+ - Thu Nov 17 2016 14:02:15 GMT-0500 (EST)
+ - Update dependencies (long time coming!) 
+
 #### v0.1.0
 - Add optional query object to resolvers.
 
