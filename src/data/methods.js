@@ -19,7 +19,7 @@ type SequelizeModel = {
  */
 export function getArrayData(
   instances: Array<SequelizeModel>,
-  withMethods: boolean = false
+  withMethods: boolean 
 ): Array<Attributes> {
 
   if (withMethods) {
