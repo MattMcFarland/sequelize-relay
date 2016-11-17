@@ -44,7 +44,7 @@
     "babel-preset-stage-0": "^6.3.13",
     "chai": "^3.4.1",
     "chai-as-promised": "^5.2.0",
-    "coveralls": "^2.11.6",
+    "coveralls": "^2.11.14",
     "eslint": "^3.4.0",
     "eslint-plugin-flow-vars": "^0.5.0",
     "express": "^4.13.3",
