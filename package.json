@@ -63,7 +63,7 @@
   "peerDependencies": {
     "graphql": "^0.4.14",
     "graphql-relay": "^0.3.6",
-    "sequelize": "^3.24.8"
+    "sequelize": "^3.26.0"
   },
   "directories": {
     "lib": "./lib"
