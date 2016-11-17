@@ -36,7 +36,7 @@
   "devDependencies": {
     "babel": "^6.3.26",
     "babel-cli": "^6.3.17",
-    "babel-core": "^6.3.26",
+    "babel-core": "^6.18.1",
     "babel-eslint": "^6.1.2",
     "babel-plugin-transform-flow-strip-types": "^6.3.15",
     "babel-polyfill": "^6.3.14",
