@@ -1,6 +1,6 @@
 {
   "name": "sequelize-relay",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A thin wrapper for sequelize and graphql-relay-js",
   "main": "lib/index.js",
   "scripts": {
