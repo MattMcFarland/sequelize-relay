@@ -50,7 +50,7 @@
     "express": "^4.14.0",
     "express-graphql": "^0.6.1",
     "faker": "^3.1.0",
-    "flow-bin": "^0.36.0",
+    "flow-bin": "^0.37.3",
     "isparta": "^4.0.0",
     "lodash": "^4.17.2",
     "mocha": "^3.1.2",
